@@ -1,7 +1,7 @@
 "#####表示設定#####
 set title "編集中のファイル名を表示
 syntax on "コードの色分け
-set tabstop=4 "インデントをスペース4つ分に設定
+set tabstop=2 "インデントをスペース4つ分に設定
 
 set ignorecase "大文字/小文字の区別なく検索する
 
@@ -24,15 +24,25 @@ set showmatch
 "自動クリップボード
 set clipboard=unnamed
 
+set shiftwidth=2
+
+"if has('vim-starting')
+"    set runtimepath+=~/.vim/bundle/neobundle.vim/
+"endif
+"Required:
+"call neobundle#begin(expand('~/.vim/bundle/'))
+"NeoBundleFetch 'Shougo/neobundle.vim'
+"call neobundle#end()
+"NeoBundleCheck
+
+
+
 "Bundle
 " bundleで管理するディレクトリを指定
-set runtimepath+=~/.vim/bundle/neobundle.vim/
 
 "volt拡張子のファイルのカラーを設定
 au! BufNewFile,BufRead *.volt set filetype=htmldjango
  
-"Required:
-"call neobundle#begin(expand('~/.vim/bundle/'))
  
 " neobundle自体をneobundleで管理
 "NeoBundleFetch 'Shougo/neobundle.vim'
@@ -55,3 +65,77 @@ au! BufNewFile,BufRead *.volt set filetype=htmldjango
 
 "call neobundle#end()
 
+
+
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=/Users/yoshiokamasato/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/Users/yoshiokamasato/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'digitaltoad/vim-jade'
+"NeoBundle 'mattn/jscomplete-vim'
+"NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" You can specify revision/branch/tag.
+"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+"
+"let g:jscomplete_use = ['dom', 'moz', 'es6th']
+"let g:syntastic_javascript_checker = "jslint"
+
+"vim-indent-guides
+"let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_start_level=2
+"let g:indent_guides_auto_colors=0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=18
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=19
+"let g:indent_guides_color_change_percent = 30
+"let g:indent_guides_guide_size = 1
+
+
+
+"全角スペースをハイライト表示
+set list
+set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+
+function! ZenkakuSpace()
+	highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+
+if has('syntax')
+	augroup ZenkakuSpace
+	autocmd!
+	autocmd ColorScheme       * call ZenkakuSpace()
+	autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+	augroup END
+	call ZenkakuSpace()
+endif
