@@ -99,6 +99,9 @@ NeoBundle 'digitaltoad/vim-jade'
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 
 " Required:
+"
+NeoBundle 'fatih/vim-go'
+"
 call neobundle#end()
 
 " Required:
@@ -139,3 +142,7 @@ if has('syntax')
 	augroup END
 	call ZenkakuSpace()
 endif
+
+
+"Go
+source ~/.vimrc.golang

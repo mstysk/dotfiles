@@ -13,6 +13,9 @@ export EDITOR=/usr/local/bin/vim
 export PAGER=/usr/local/bin/vimpager
 export MANPAGER=/usr/local/bin/vimpager
 
+#GOPATH
+export GOPATH=${HOME}/go
+
 
 # -------------------------------------
 # zshのオプション
@@ -58,10 +61,13 @@ setopt auto_cd
 typeset -U path cdpath fpath manpath
 
 path=(
+    $path
     $HOME/bin(N-/)
+    $HOME/.rbenv/bin
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
-    $path
+    /usr/local/go/bin
+    /usr/local/share/git-core/contrib/diff-highlight
 )
 
 # -------------------------------------
@@ -160,3 +166,26 @@ function title {
 if [[ -s ~/.nvm/nvm.sh ]];
  then source ~/.nvm/nvm.sh
 fi
+
+#絞り込み後viで開く
+function agvim () {
+  vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+}
+
+#--------------------
+# 開発用
+#--------------------
+
+if [[ -s ~/.skmrc.sh ]];
+    then source ~/.skmrc.sh
+fi
+
+function tree(){
+    pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'
+}
+
+
+#--------------------
+# ruby
+#--------------------
+eval "$(rbenv init -)"
