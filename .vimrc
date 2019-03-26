@@ -103,7 +103,7 @@ endif
 
 
 "Go
-source ~/.vimrc.golang
+"source ~/.vimrc.golang
 
 
 if &compatible
