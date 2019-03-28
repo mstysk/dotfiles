@@ -16,11 +16,6 @@ repo = 'w0rp/ale'
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
-hook_add = '''
-let g:LanguageClient_loggingLevel = 'INFO'
-let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
-'''
 
 [[plugins]]
 repo = 'roxma/LanguageServer-php-neovim'
@@ -28,11 +23,6 @@ build = 'composer install && composer run-script parse-stubs'
 
 [[plugins]]
 repo = 'vim-scripts/PDV--phpDocumentor-for-Vim'
-hook_add = '''
-inoremap <C-]> <Esc>:call PhpDocSingle()<CR>i
-nnoremap <C-]> :call PhpDocSingle()<CR>
-vnoremap <C-]> :call PhpDocSingle()<CR>
-'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -48,10 +38,9 @@ repo ='machakann/vim-highlightedyank'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
 
-'''
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
