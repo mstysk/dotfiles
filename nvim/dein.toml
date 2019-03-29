@@ -40,7 +40,19 @@ repo ='machakann/vim-highlightedyank'
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'nightsense/snow'
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
