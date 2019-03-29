@@ -7,11 +7,7 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # エディタ
-export EDITOR=/usr/local/bin/vim
-
-# ページャ
-export PAGER=/usr/local/bin/vimpager
-export MANPAGER=/usr/local/bin/vimpager
+export EDITOR=/usr/local/bin/nvim
 
 #GOPATH
 export GOPATH=${HOME}/go
@@ -180,6 +176,10 @@ if [[ -s ~/.skmrc.sh ]];
     then source ~/.skmrc.sh
 fi
 
+if [[ -s ~/.bengo4rc.sh ]];
+    then source ~/.bengo4rc.sh
+fi
+
 function tree(){
     pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'
 }
@@ -188,4 +188,7 @@ function tree(){
 #--------------------
 # ruby
 #--------------------
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
+
+# rust
+source $HOME/.cargo/env
