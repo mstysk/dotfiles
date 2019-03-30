@@ -56,3 +56,6 @@ repo = 'pangloss/vim-javascript'
 
 [[plugins]]
 repo = 'mxw/vim-jsx'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'

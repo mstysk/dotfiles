@@ -14,6 +14,8 @@ set confirm
 set whichwrap=b,s,h,l,<,>,[,]
 
 " key mapping change
+let mapleader="\<Space>"
+nnoremap <Leader>w :<C-u>w<CR>
 nnoremap ; :
 nnoremap : ;
 
@@ -104,8 +106,6 @@ endif
 if dein#tap('lightline')
   let g:lightline = {}
   let g:lightline.colorscheme = 'snow_dark'
-  let g:lightline.component_function = {}
-  let g:lightline.component_function.branch = 'GitBranch'
 endif
 
 " vim-gitguter
@@ -116,4 +116,8 @@ endif
 
 if dein#tap('vim-javascript')
     let g:javascript_plugin_jsdoc = 1
+endif
+
+if dein#tap('gina.vim')
+    nnoremap <Leader><Leader>g :<C-u>Gina status<CR>
 endif
