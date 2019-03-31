@@ -22,16 +22,10 @@ repo = 'roxma/LanguageServer-php-neovim'
 build = 'composer install && composer run-script parse-stubs'
 
 [[plugins]]
-repo = 'vim-scripts/PDV--phpDocumentor-for-Vim'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'itchyny/vim-gitbranch'
-
-[[plugins]]
-repo = 'andymass/vim-matchup'
 
 [[plugins]]
 repo ='machakann/vim-highlightedyank'
@@ -52,10 +46,19 @@ repo = 'airblade/vim-gitgutter'
 repo = 'nightsense/snow'
 
 [[plugins]]
-repo = 'pangloss/vim-javascript'
-
-[[plugins]]
 repo = 'mxw/vim-jsx'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'andymass/vim-matchup'
+
+[[plugins]]
+repo = 'tobyS/vmustache'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'tobyS/pdv'

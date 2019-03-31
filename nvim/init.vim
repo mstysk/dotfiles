@@ -81,13 +81,6 @@ if dein#tap('LanguageClient-neovim')
 
 endif
 
-" vim-scripts/PDV--phpDocumentor-for-Vim
-if dein#tap('PDV--phpDocumentor-for-Vim')
-    inoremap <C-]> <Esc>:call PhpDocSingle()<CR>i
-    nnoremap <C-]> :call PhpDocSingle()<CR>
-    vnoremap <C-]> :call PhpDocSingle()<CR>
-endif
-
 " nathanaelkane/vim-indent-guides
 if dein#tap('vim-indent-guides')
     let g:indent_guides_enable_on_vim_startup = 1
@@ -112,12 +105,18 @@ endif
 if dein#tap('vim-gitgutter')
     let g:gitgutter_override_sign_column_highlight = 0
     highlight SignColumn ctermbg=blue
-endif
-
-if dein#tap('vim-javascript')
-    let g:javascript_plugin_jsdoc = 1
+    nmap ]h <Plug>GitGutterNextHunk
+    nmap [h <Plug>GitGutterPrevHunk
+    nmap <Leader>ha <Plug>GitGutterStageHunk
+    nmap <Leader>hu <Plug>GitGutterRevertHunk
 endif
 
 if dein#tap('gina.vim')
     nnoremap <Leader><Leader>g :<C-u>Gina status<CR>
+endif
+
+" PHP Documentor for VIM
+if dein#tap('pdv')
+    let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
+    nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 endif
