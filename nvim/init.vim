@@ -112,7 +112,8 @@ if dein#tap('vim-gitgutter')
 endif
 
 if dein#tap('gina.vim')
-    nnoremap <Leader><Leader>g :<C-u>Gina status --opender=edit<CR>
+    nnoremap <Leader><Leader>g :<C-u>Gina status --opener=edit<CR>
+    nnoremap <Leader><Leader>gc :<C-u>Gina commit --opener=edit<CR>
 endif
 
 " PHP Documentor for VIM
