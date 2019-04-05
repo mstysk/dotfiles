@@ -122,3 +122,7 @@ if dein#tap('pdv')
     let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
     nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 endif
+
+if dein#tap('echodoc')
+    set cmdheight=2
+endif

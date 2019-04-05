@@ -62,3 +62,6 @@ repo = 'SirVer/ultisnips'
 
 [[plugins]]
 repo = 'tobyS/pdv'
+
+[[plugins]]
+repo = 'Shougo/echodoc.vim'
