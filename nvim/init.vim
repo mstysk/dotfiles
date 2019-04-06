@@ -64,7 +64,11 @@ endif
 
 " ==== plugins =====
 
-" autozimu/LanguageClient-neovim
+if dein#tap('nerdtree')
+    nnoremap <silent> <C-e> :NERDTreeToggle<CR>'
+    let NERDTreeShowHidden=1
+endif
+
 if dein#tap('LanguageClient-neovim')
     let g:LanguageClient_serverCommands = {
         \ 'php': ['~/.cache/dein/repos/github.com/roxma/LanguageServer-php-neovim/vendor/felixfbecker/language-server'],
@@ -81,7 +85,6 @@ if dein#tap('LanguageClient-neovim')
 
 endif
 
-" nathanaelkane/vim-indent-guides
 if dein#tap('vim-indent-guides')
     let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_auto_colors = 0
@@ -89,19 +92,16 @@ if dein#tap('vim-indent-guides')
     hi IndentGuidesEven ctermbg=darkgrey
 endif
 
-" quickrun
 if dein#tap('vim-quickrun')
     let g:quickrun_no_default_key_mappings = 1
     nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 endif
 
-" lightline
 if dein#tap('lightline')
   let g:lightline = {}
   let g:lightline.colorscheme = 'snow_dark'
 endif
 
-" vim-gitguter
 if dein#tap('vim-gitgutter')
     let g:gitgutter_override_sign_column_highlight = 0
     highlight SignColumn ctermbg=blue
@@ -120,7 +120,7 @@ endif
 " PHP Documentor for VIM
 if dein#tap('pdv')
     let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
-    nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+    nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
 endif
 
 if dein#tap('echodoc')
