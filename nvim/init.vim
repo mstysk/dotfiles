@@ -69,6 +69,10 @@ if dein#tap('nerdtree')
     let NERDTreeShowHidden=1
 endif
 
+if dein#tap('deoplete')
+    let g:deoplete#enable_at_startup = 1
+endif
+
 if dein#tap('LanguageClient-neovim')
     let g:LanguageClient_serverCommands = {
         \ 'php': ['~/.cache/dein/repos/github.com/roxma/LanguageServer-php-neovim/vendor/felixfbecker/language-server'],
