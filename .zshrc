@@ -64,6 +64,7 @@ path=(
     /usr/local/sbin(N-/)
     /usr/local/go/bin
     /usr/local/share/git-core/contrib/diff-highlight
+    echo `npm bin -g`
 )
 
 # -------------------------------------
