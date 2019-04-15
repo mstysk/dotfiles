@@ -51,8 +51,8 @@ autocmd Colorscheme * hi TwoByteSpace term=underline ctermbg=DarkGreen guibg=Dar
 autocmd VimEnter,WinEnter * match TwoByteSpace /　/
 
 " color scheme
-colorscheme elflord
-"colorscheme snow
+" colo elflord
+colo seoul256
 
 " file type indent
 if has("autocmd")
@@ -64,69 +64,75 @@ endif
 
 " ==== plugins =====
 
-if dein#tap('nerdtree')
-    nnoremap <silent> <C-e> :NERDTreeToggle<CR>'
-    let NERDTreeShowHidden=1
-endif
+" airline 
+let g:airline#extensions#tabline#enabled = 1
 
-if dein#tap('deoplete')
-    let g:deoplete#enable_at_startup = 1
-endif
+" light line
+" set noshowmode
+" set laststatus=2
+" let g:lightline = {}
+" let g:lightline.active = {}
+" let g:lightline.active.left = [
+"             \ [ 'mode', 'paste' ], 
+"             \ ['lspstatus', 'gitbranch', 'readonly', 'filename', 'modified']
+"             \ ]
+" let g:lightline.component_function = {}
+" let g:lightline.component_function.gitbranch = 'gitbranch#name'
+" let g:lightline.component_function.lspstatus = 'LspStatus'
 
-if dein#tap('LanguageClient-neovim')
-    let g:LanguageClient_serverCommands = {
-        \ 'php': ['~/.cache/dein/repos/github.com/roxma/LanguageServer-php-neovim/vendor/felixfbecker/language-server'],
-        \ }
-    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <silent> ln :call LanguageClient#textDocument_rename()<CR>
+" nerdtree
+nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
-    " debug
-    let g:LanguageClient_changeThrottle = 0.5
-    let g:LanguageClient_loggingLevel = 'INFO'
-    let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-    let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
+" vim easy align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
-endif
+" language sercer protocol
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'intelephense',
+    \ 'cmd': {server_info->['node', expand('/usr/local/Cellar/node/10.9.0/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
+    \ 'initialization_options': {"storagePath": "~/.local/share/intelephense"},
+    \ 'whitelist': ['php'],
+    \ })
+let g:lsp_diagnostics_enabled = 0 
 
-if dein#tap('vim-indent-guides')
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_auto_colors = 0
-    hi IndentGuidesOdd  ctermbg=black
-    hi IndentGuidesEven ctermbg=darkgrey
-endif
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=none
+hi IndentGuidesEven ctermbg=darkgrey
 
-if dein#tap('vim-quickrun')
-    let g:quickrun_no_default_key_mappings = 1
-    nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
-endif
-
-if dein#tap('lightline')
-  let g:lightline = {}
-  let g:lightline.colorscheme = 'snow_dark'
-endif
-
-if dein#tap('vim-gitgutter')
-    let g:gitgutter_override_sign_column_highlight = 0
-    highlight SignColumn ctermbg=blue
-    nmap ]h <Plug>GitGutterNextHunk
-    nmap [h <Plug>GitGutterPrevHunk
-    nmap <Leader>ha <Plug>GitGutterStageHunk
-    nmap <Leader>hu <Plug>GitGutterRevertHunk
-endif
-
-if dein#tap('gina.vim')
-    nnoremap <Leader><Leader>g :<C-u>Gina status --opener=edit<CR>
-    nnoremap <Leader><Leader>gc :<C-u>Gina commit --opener=edit<CR>
-    nnoremap <Leader><Leader>gp :<C-u>Gina push<CR>
-endif
-
-" PHP Documentor for VIM
-if dein#tap('pdv')
-    let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
-    nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
-endif
-
-if dein#tap('echodoc')
-    set cmdheight=2
-endif
+" quick run
+let g:quickrun_no_default_key_mappings = 1
+nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
+ 
+" if dein#tap('lightline')
+"   let g:lightline = {}
+"   let g:lightline.colorscheme = 'snow_dark'
+" endif
+" 
+" if dein#tap('vim-gitgutter')
+"     let g:gitgutter_override_sign_column_highlight = 0
+"     highlight SignColumn ctermbg=blue
+"     nmap ]h <Plug>GitGutterNextHunk
+"     nmap [h <Plug>GitGutterPrevHunk
+"     nmap <Leader>ha <Plug>GitGutterStageHunk
+"     nmap <Leader>hu <Plug>GitGutterRevertHunk
+" endif
+" 
+" if dein#tap('gina.vim')
+"     nnoremap <Leader><Leader>g :<C-u>Gina status --opener=edit<CR>
+"     nnoremap <Leader><Leader>gc :<C-u>Gina commit --opener=edit<CR>
+"     nnoremap <Leader><Leader>gp :<C-u>Gina push<CR>
+" endif
+" 
+" " PHP Documentor for VIM
+" if dein#tap('pdv')
+"     let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
+"     nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
+" endif
+" 
+" if dein#tap('echodoc')
+"     set cmdheight=2
+" endif
