@@ -106,6 +106,11 @@ hi IndentGuidesEven ctermbg=darkgrey
 " quick run
 let g:quickrun_no_default_key_mappings = 1
 nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
+
+" ale
+let g:ale_fixers = {}
+let g:ale_fixers['php'] = ['php_cs_fixer']
+let g:ale_fix_on_save = 1
  
 " if dein#tap('lightline')
 "   let g:lightline = {}
