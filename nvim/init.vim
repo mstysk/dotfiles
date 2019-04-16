@@ -100,3 +100,5 @@ let g:ale_fixers = {}
 let g:ale_fixers['php'] = ['php_cs_fixer']
 let g:ale_fix_on_save = 1
  
+" ref
+let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"

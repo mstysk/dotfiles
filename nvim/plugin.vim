@@ -31,6 +31,7 @@ Plug 'lambdalisue/gina.vim'
 Plug 'tobyS/pdv'
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'thinca/vim-ref'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
