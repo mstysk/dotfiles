@@ -67,22 +67,10 @@ endif
 " airline 
 let g:airline#extensions#tabline#enabled = 1
 
-" light line
-" set noshowmode
-" set laststatus=2
-" let g:lightline = {}
-" let g:lightline.active = {}
-" let g:lightline.active.left = [
-"             \ [ 'mode', 'paste' ], 
-"             \ ['lspstatus', 'gitbranch', 'readonly', 'filename', 'modified']
-"             \ ]
-" let g:lightline.component_function = {}
-" let g:lightline.component_function.gitbranch = 'gitbranch#name'
-" let g:lightline.component_function.lspstatus = 'LspStatus'
-
 " nerdtree
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+autocmd vimEnter * NERDTree
 
 " vim easy align
 xmap ga <Plug>(EasyAlign)
@@ -112,32 +100,3 @@ let g:ale_fixers = {}
 let g:ale_fixers['php'] = ['php_cs_fixer']
 let g:ale_fix_on_save = 1
  
-" if dein#tap('lightline')
-"   let g:lightline = {}
-"   let g:lightline.colorscheme = 'snow_dark'
-" endif
-" 
-" if dein#tap('vim-gitgutter')
-"     let g:gitgutter_override_sign_column_highlight = 0
-"     highlight SignColumn ctermbg=blue
-"     nmap ]h <Plug>GitGutterNextHunk
-"     nmap [h <Plug>GitGutterPrevHunk
-"     nmap <Leader>ha <Plug>GitGutterStageHunk
-"     nmap <Leader>hu <Plug>GitGutterRevertHunk
-" endif
-" 
-" if dein#tap('gina.vim')
-"     nnoremap <Leader><Leader>g :<C-u>Gina status --opener=edit<CR>
-"     nnoremap <Leader><Leader>gc :<C-u>Gina commit --opener=edit<CR>
-"     nnoremap <Leader><Leader>gp :<C-u>Gina push<CR>
-" endif
-" 
-" " PHP Documentor for VIM
-" if dein#tap('pdv')
-"     let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
-"     nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
-" endif
-" 
-" if dein#tap('echodoc')
-"     set cmdheight=2
-" endif

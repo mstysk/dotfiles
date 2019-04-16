@@ -19,6 +19,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'thinca/vim-quickrun'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
