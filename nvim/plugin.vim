@@ -28,6 +28,8 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'w0rp/ale'
 
 Plug 'lambdalisue/gina.vim'
+Plug 'SirVer/ultisnips'
+Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
 
 Plug 'ctrlpvim/ctrlp.vim'

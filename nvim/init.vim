@@ -54,6 +54,9 @@ autocmd VimEnter,WinEnter * match TwoByteSpace /　/
 " colo elflord
 colo seoul256
 
+" terminal settings
+tnoremap <silent> <ESC> <C-\><C-n>
+
 " file type indent
 if has("autocmd")
     filetype plugin on
@@ -79,7 +82,7 @@ nmap ga <Plug>(EasyAlign)
 " language sercer protocol
 au User lsp_setup call lsp#register_server({
     \ 'name': 'intelephense',
-    \ 'cmd': {server_info->['node', expand('/usr/local/Cellar/node/10.9.0/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
+    \ 'cmd': {server_info->['node', expand("/Users/yoshioka/stady/npm2/lib/node_modules/intelephense/lib/intelephense.js"), '--stdio']},
     \ 'initialization_options': {"storagePath": "~/.local/share/intelephense"},
     \ 'whitelist': ['php'],
     \ })
@@ -98,7 +101,13 @@ nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 " ale
 let g:ale_fixers = {}
 let g:ale_fixers['php'] = ['php_cs_fixer']
+let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
  
+" pdv
+let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
+nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
+
 " ref
 let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"
