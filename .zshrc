@@ -1,5 +1,7 @@
 # zplug
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 # theme (https://github.com/sindresorhus/pure#zplug)好みのスキーマをいれてくだされ。
 zplug "mafredri/zsh-async"
@@ -43,4 +45,18 @@ alias ls="ls -G" # color for darwin
 alias l="ls -la"
 alias la="ls -la"
 alias l1="ls -1"
+
+
+typeset -U path cdpath fpath manpath
+path=(
+    $path
+    $HOME/bin(N-/)
+    $HOME/.rbenv/bin
+    /usr/local/bin(N-/)
+    /usr/local/sbin(N-/)
+    /usr/local/go/bin
+    /usr/local/share/git-core/contrib/diff-highlight
+    echo `npm bin -g`
+    $HOME/.composer/vendor/bin
+)
 
