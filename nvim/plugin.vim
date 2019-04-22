@@ -35,6 +35,9 @@ Plug 'tobyS/pdv'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-ref'
 
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 

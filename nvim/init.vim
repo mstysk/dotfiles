@@ -111,3 +111,6 @@ nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
 
 " ref
 let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"
+
+" vim-javascript
+let g:javascript_plugin_flow = 1
