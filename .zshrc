@@ -60,3 +60,9 @@ path=(
     $HOME/.composer/vendor/bin
 )
 
+
+if [[ -s ~/.bengo4rc.sh ]];
+    then source ~/.bengo4rc.sh
+fi
+
+# eval "$(anyenv init -)"
