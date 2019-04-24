@@ -36,7 +36,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-ref'
 
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

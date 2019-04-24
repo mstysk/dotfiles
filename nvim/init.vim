@@ -114,3 +114,15 @@ let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"
 
 " vim-javascript
 let g:javascript_plugin_flow = 1
+
+" nerd icon setting
+let g:NERDTreeDisableFileExtensionHighlight = 1
+let g:NERDTreeDisableExactMatchHighlight = 1
+let g:NERDTreeDisablePatternMatchHighlight = 1
+
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name<Paste>
