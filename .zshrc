@@ -13,6 +13,7 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "chrissicool/zsh-256color"
+# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 zplug "mollifier/anyframe"
 
@@ -48,16 +49,18 @@ alias l1="ls -1"
 
 
 typeset -U path cdpath fpath manpath
+export GOPATH=${HOME}/go
 path=(
-    $path
-    $HOME/bin(N-/)
-    $HOME/.rbenv/bin
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     /usr/local/go/bin
     /usr/local/share/git-core/contrib/diff-highlight
+    ${GOPATH}/bin
     echo `npm bin -g`
     $HOME/.composer/vendor/bin
+    $HOME/.rbenv/bin
+    $HOME/bin(N-/)
+    $path
 )
 
 
@@ -65,4 +68,12 @@ if [[ -s ~/.bengo4rc.sh ]];
     then source ~/.bengo4rc.sh
 fi
 
-# eval "$(anyenv init -)"
+function chpwd() { ls -1 }
+eval "$(anyenv init -)"
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yoshioka/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yoshioka/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yoshioka/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yoshioka/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
