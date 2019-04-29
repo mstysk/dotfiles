@@ -38,6 +38,7 @@ fpath=(~/.anyframe(N-/) $fpath)
 autoload -Uz anyframe-init
 anyframe-init
 
+export LSCOLORS=gxfxcxdxbxegedabagacad
 autoload -Uz colors
 colors
 
