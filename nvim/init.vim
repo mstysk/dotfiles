@@ -80,6 +80,25 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " language sercer protocol
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ asyncomplete#force_refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+let g:asyncomplete_auto_popup = 0
 au User lsp_setup call lsp#register_server({
     \ 'name': 'intelephense',
     \ 'cmd': {server_info->['node', expand("/Users/yoshioka/stady/npm2/lib/node_modules/intelephense/lib/intelephense.js"), '--stdio']},
