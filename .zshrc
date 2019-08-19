@@ -27,6 +27,14 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
+# completion
+autoload -U compinit
+compinit -u
+
+if [[ -s ~/.bengo4rc.sh ]];
+    then source ~/.bengo4rc.sh
+fi
+
 # check command 
 # npm install --global pure-prompt-now
 autoload -U promptinit; promptinit
