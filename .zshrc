@@ -42,22 +42,30 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 autoload -Uz colors
 colors
 
+# cdr
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
 # ls
 alias ls="ls -G" # color for darwin
 alias l="ls -la"
 alias la="ls -la"
 alias l1="ls -1"
-
+alias gc=anyframe-widget-checkout-git-branch
+alias sl=anyframe-selector-auto
+alias hi=anyframe-widget-execute-history
+alias cdr=anyframe-widget-cdr
 
 typeset -U path cdpath fpath manpath
 export GOPATH=${HOME}/go
+
 path=(
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     /usr/local/go/bin
     /usr/local/share/git-core/contrib/diff-highlight
     ${GOPATH}/bin
-    echo `npm bin -g`
+    echo $(npm bin -g)
     $HOME/.composer/vendor/bin
     $HOME/.rbenv/bin
     $HOME/bin(N-/)
