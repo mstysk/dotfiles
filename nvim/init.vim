@@ -28,6 +28,9 @@ nnoremap gk k
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
+" clipboard
+set clipboard+=unnamedplus
+
 " cursor
 set cursorline
 hi CursorLine cterm=bold,underline
