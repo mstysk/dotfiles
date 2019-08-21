@@ -43,6 +43,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+Plug 'tomtom/tcomment_vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
