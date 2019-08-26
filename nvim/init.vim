@@ -82,34 +82,6 @@ autocmd vimEnter * NERDTree
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" language sercer protocol
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-imap <c-space> <Plug>(asyncomplete_force_refresh)
-
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ asyncomplete#force_refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-let g:asyncomplete_auto_popup = 0
-au User lsp_setup call lsp#register_server({
-    \ 'name': 'intelephense',
-    \ 'cmd': {server_info->['node', expand("/Users/yoshioka/stady/npm2/lib/node_modules/intelephense/lib/intelephense.js"), '--stdio']},
-    \ 'initialization_options': {"storagePath": "~/.local/share/intelephense"},
-    \ 'whitelist': ['php'],
-    \ })
-let g:lsp_diagnostics_enabled = 0 
-
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
@@ -120,13 +92,6 @@ hi IndentGuidesEven ctermbg=darkgrey
 let g:quickrun_no_default_key_mappings = 1
 nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 
-" ale
-let g:ale_fixers = {}
-let g:ale_fixers['php'] = ['php_cs_fixer']
-let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_use_local_config = 1
- 
 " pdv
 let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
 nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
@@ -137,14 +102,18 @@ let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"
 " vim-javascript
 let g:javascript_plugin_flow = 1
 
+" Coc
+highlight CocErrorSign ctermfg=15 ctermbg=196
+highlight CocWarningSign ctermfg=0 ctermbg=172
+
+
 " nerd icon setting
-let g:NERDTreeDisableFileExtensionHighlight = 1
-let g:NERDTreeDisableExactMatchHighlight = 1
-let g:NERDTreeDisablePatternMatchHighlight = 1
+" let g:NERDTreeDisableFileExtensionHighlight = 1
+" let g:NERDTreeDisableExactMatchHighlight = 1
+" let g:NERDTreeDisablePatternMatchHighlight = 1
+"
+" let g:NERDTreeFileExtensionHighlightFullName = 1
+" let g:NERDTreeExactMatchHighlightFullName = 1
+" let g:NERDTreePatternMatchHighlightFullName = 1
 
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-
-let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
-let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name<Paste>
+" let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match

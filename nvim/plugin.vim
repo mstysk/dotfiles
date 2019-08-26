@@ -14,36 +14,33 @@ Plug 'junegunn/vim-plug'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/seoul256.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'thinca/vim-quickrun'
+
+" airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'w0rp/ale'
 
 Plug 'lambdalisue/gina.vim'
-Plug 'SirVer/ultisnips'
-Plug 'tobyS/vmustache'
-Plug 'tobyS/pdv'
+
+"Plug 'SirVer/ultisnips'
+"Plug 'tobyS/vmustache'
+"Plug 'tobyS/pdv'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-ref'
 
 Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-Plug 'MaxMEllon/vim-jsx-pretty'
 
 Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'ryanoasis/vim-devicons'
 
 Plug 'tomtom/tcomment_vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prabirshrestha/vim-lsp'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
