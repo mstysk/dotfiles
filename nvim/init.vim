@@ -102,18 +102,16 @@ let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"
 " vim-javascript
 let g:javascript_plugin_flow = 1
 
-" Coc
+" coc @see https://github.com/neoclide/coc.nvim
 highlight CocErrorSign ctermfg=15 ctermbg=196
 highlight CocWarningSign ctermfg=0 ctermbg=172
 
+" coc key map
+nmap <silent> <Leader><Leader> :<C-u>CocList<cr>
+nmap <silent> <Leader>df <Plug>(coc-definition)
+nmap <silent> <Leader>h :<C-u>call CocAction('doHover')<cr>
+nmap <silent> <Leader>df <Plug>(coc-definition)
+nmap <silent> <Leader>rf <Plug>(coc-references)
+nmap <silent> <Leader>rn <Plug>(coc-rename)
+nmap <silent> <Leader>fmt <Plug>(coc-format)
 
-" nerd icon setting
-" let g:NERDTreeDisableFileExtensionHighlight = 1
-" let g:NERDTreeDisableExactMatchHighlight = 1
-" let g:NERDTreeDisablePatternMatchHighlight = 1
-"
-" let g:NERDTreeFileExtensionHighlightFullName = 1
-" let g:NERDTreeExactMatchHighlightFullName = 1
-" let g:NERDTreePatternMatchHighlightFullName = 1
-
-" let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
