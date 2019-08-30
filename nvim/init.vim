@@ -6,12 +6,16 @@ set helplang=ja,en
 syntax on
 set nocompatible
 set nobackup
+set nowritebackup
 set number
 set list
 set showtabline=2
 set hidden
 set confirm
 set whichwrap=b,s,h,l,<,>,[,]
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
 
 " key mapping change
 let mapleader="\<Space>"
@@ -108,16 +112,53 @@ let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"
 " vim-javascript
 let g:javascript_plugin_flow = 1
 
+" coc settings
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" coc nmap
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 " coc @see https://github.com/neoclide/coc.nvim
 highlight CocErrorSign ctermfg=15 ctermbg=196
 highlight CocWarningSign ctermfg=0 ctermbg=172
 
-" coc key map
-nmap <silent> <Leader><Leader> :<C-u>CocList<cr>
-nmap <silent> <Leader>df <Plug>(coc-definition)
-nmap <silent> <Leader>h :<C-u>call CocAction('doHover')<cr>
-nmap <silent> <Leader>df <Plug>(coc-definition)
-nmap <silent> <Leader>rf <Plug>(coc-references)
-nmap <silent> <Leader>rn <Plug>(coc-rename)
-nmap <silent> <Leader>fmt <Plug>(coc-format)
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+"
