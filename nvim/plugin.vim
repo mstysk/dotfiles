@@ -25,9 +25,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'lambdalisue/gina.vim'
 
-"Plug 'SirVer/ultisnips'
-"Plug 'tobyS/vmustache'
-"Plug 'tobyS/pdv'
+Plug 'SirVer/ultisnips'
+Plug 'tobyS/vmustache'
+Plug 'tobyS/pdv'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-ref'
@@ -35,7 +35,7 @@ Plug 'thinca/vim-ref'
 Plug 'pangloss/vim-javascript'
 
 Plug 'airblade/vim-gitgutter'
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'tomtom/tcomment_vim'
 
