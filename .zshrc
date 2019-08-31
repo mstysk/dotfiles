@@ -35,6 +35,10 @@ if [[ -s ~/.bengo4rc.sh ]];
     then source ~/.bengo4rc.sh
 fi
 
+if [[ -s ~/dotfiles/dev.sh ]];
+    then source ~/dotfiles/dev.sh
+fi
+
 # check command 
 # npm install --global pure-prompt-now
 autoload -U promptinit; promptinit
