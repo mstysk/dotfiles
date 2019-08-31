@@ -3,8 +3,7 @@
     "languageserver": {
         "intelephense": {
             "command": "intelephense",
-            "args":
-            [
+            "args": [
                 "--stdio"
             ],
             "filetypes": [
@@ -13,6 +12,16 @@
             "initializationOptions": {
                 "storagePath": "/tmp/intelephense"
             }
+        },
+        "metals": {
+            "command": "metals-vim",
+            "rootPatterns": [
+                "build.sbt"
+            ],
+            "filetypes": [
+                "scala",
+                "sbt"
+            ]
         }
     }
 }
