@@ -2,6 +2,9 @@
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
+# set vim mode
+set -o vi
+
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 # theme (https://github.com/sindresorhus/pure#zplug)好みのスキーマをいれてくだされ。
 zplug "mafredri/zsh-async"
