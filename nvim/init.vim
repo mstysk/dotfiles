@@ -70,6 +70,7 @@ if has("autocmd")
     filetype indent on
     au BufRead,BufNewFile *.jsx set filetype=javascript
     autocmd FileType javascript setlocal ts=2 sts=4 sw=4
+    au BufRead,BufNewFile *.sbt set filetype=scala
 endif
 
 " ==== plugins =====
@@ -136,9 +137,19 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " coc nmap
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>rn <Plug>(coc-rename)
+
+
+nnoremap <silent> F :call CocAction('format')<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -158,7 +169,9 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-"
+nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>

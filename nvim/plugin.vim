@@ -42,6 +42,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prabirshrestha/vim-lsp'
 
+" Scala Plugin
+Plug 'derekwyatt/vim-scala'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
