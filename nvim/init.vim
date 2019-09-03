@@ -16,6 +16,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 set cmdheight=2
 set updatetime=300
 set signcolumn=yes
+set termguicolors "true colors
 
 " key mapping change
 let mapleader="\<Space>"
