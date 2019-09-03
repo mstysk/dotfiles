@@ -87,9 +87,13 @@ path=(
     $path
 )
 
-
 if [[ -s ~/.bengo4rc.sh ]];
     then source ~/.bengo4rc.sh
+fi
+
+# v0.4.0 nightly @see https://github.com/neovim/neovim/releases/tag/nightly
+if [[ -f ~/packages/nvim-osx64/bin/nvim ]]; then
+    alias nvim=~/packages/nvim-osx64/bin/nvim
 fi
 
 function chpwd() { ls -1 }
