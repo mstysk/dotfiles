@@ -169,9 +169,15 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
-nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <Leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <Leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <Leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <Leader>j  :<C-u>CocNext<CR>
+nnoremap <silent> <Leader>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <Leader>p  :<C-u>CocListResume<CR>
+
+" window resize
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
