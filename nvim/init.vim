@@ -159,8 +159,8 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " coc @see https://github.com/neoclide/coc.nvim
-highlight CocErrorSign ctermfg=15 ctermbg=196
-highlight CocWarningSign ctermfg=0 ctermbg=172
+hi CocErrorSign ctermfg=15 ctermbg=196
+hi CocWarningSign ctermfg=0 ctermbg=172
 
 augroup mygroup
   autocmd!
@@ -182,3 +182,10 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" popupmenu
+set pumblend=30
+set winblend=30
+
+hi Pmenu ctermbg=DarkGreen guifg=#E9E9E9 guibg=DarkGreen
+hi PmenuSel ctermbg=DarkBlue guifg=#E9E9E9 guibg=DarkBlue
