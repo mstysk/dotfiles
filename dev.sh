@@ -30,3 +30,10 @@ makedir() {
       mkdir -p $dir
   fi
 }
+
+lsp-docker() {
+  which docker-langserver
+  if [ $? != 0 ]; then
+    npm install -g dockerfile-language-server-nodejs
+  fi
+}
