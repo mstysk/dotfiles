@@ -22,6 +22,14 @@
                 "scala",
                 "sbt"
             ]
+        },
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": [
+                "dockerfile",
+                "DockerFile"
+            ],
+            "args": ["--stdio"]
         }
     }
 }
