@@ -91,11 +91,6 @@ if [[ -s ~/.bengo4rc.sh ]];
     then source ~/.bengo4rc.sh
 fi
 
-# v0.4.0 nightly @see https://github.com/neovim/neovim/releases/tag/nightly
-if [[ -f ~/packages/nvim-osx64/bin/nvim ]]; then
-    alias nvim=~/packages/nvim-osx64/bin/nvim
-fi
-
 function chpwd() { ls -1 }
 eval "$(anyenv init -)"
 
@@ -105,3 +100,4 @@ if [ -f '/Users/yoshioka/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Us
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yoshioka/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yoshioka/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
