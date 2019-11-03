@@ -200,3 +200,7 @@ nnoremap ,? :!open https://ejje.weblio.jp/content/<cword><CR>
 " config shortcuts
 nnoremap <silent> <leader>ec :e $MYVIMRC<CR>
 nnoremap <silent> <leader>sc :source $MYVIMRC<CR>
+
+" google translate
+let g:opengoogletranslate#openbrowsercmd = 'electron-open --without-forcus'
+

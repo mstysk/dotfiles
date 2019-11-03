@@ -48,6 +48,9 @@ Plug 'derekwyatt/vim-scala'
 " Docker
 Plug 'ekalinin/dockerfile.vim'
 
-" List ends here. Plugins become visible to Vim after this call.
+Plug 'haya14busa/vim-open-googletranslate'
+Plug 'tyru/open-browser.vim'
+
+" List ends here. Plug ins become visible to Vim after this call.
 call plug#end()
 
