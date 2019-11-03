@@ -37,3 +37,7 @@ lsp-docker() {
     npm install -g dockerfile-language-server-nodejs
   fi
 }
+
+prompt-instll() {
+  npm install --global pure-prompt pure-prompt-now
+}
