@@ -17,6 +17,8 @@ set cmdheight=2
 set updatetime=300
 set signcolumn=yes
 set termguicolors "true colors
+set spell
+set spelllang=en,cjk
 
 " key mapping change
 let mapleader="\<Space>"
@@ -191,3 +193,10 @@ set winblend=30
 
 hi Pmenu ctermbg=DarkGreen guifg=#E9E9E9 guibg=DarkGreen
 hi PmenuSel ctermbg=DarkBlue guifg=#E9E9E9 guibg=DarkBlue
+
+" word 
+nnoremap ,? :!open https://ejje.weblio.jp/content/<cword><CR>
+
+" config shortcuts
+nnoremap <silent> <leader>ec :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sc :source $MYVIMRC<CR>
