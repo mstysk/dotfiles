@@ -53,6 +53,8 @@ Plug 'tyru/open-browser.vim'
 
 Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
 
+Plug 'vim-jp/vimdoc-ja'
+
 " List ends here. Plug ins become visible to Vim after this call.
 call plug#end()
 
