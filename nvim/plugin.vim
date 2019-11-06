@@ -51,6 +51,8 @@ Plug 'ekalinin/dockerfile.vim'
 Plug 'haya14busa/vim-open-googletranslate'
 Plug 'tyru/open-browser.vim'
 
+Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+
 " List ends here. Plug ins become visible to Vim after this call.
 call plug#end()
 
