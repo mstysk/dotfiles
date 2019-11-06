@@ -110,7 +110,7 @@ nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 
 " pdv
 let g:pdv_template_dir = expand('~/.config/nvim/pdv/templates_snip')
-nnoremap <C-]> :call pdv#DocumentWithSnip()<CR>
+nnoremap <leader><C-]> :call pdv#DocumentWithSnip()<CR>
 
 " ref
 let g:ref_phpmanual_path =  "${HOME}/.config/nvim/manual/php_manual_ja.html"
