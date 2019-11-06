@@ -41,3 +41,7 @@ lsp-docker() {
 prompt-instll() {
   npm install --global pure-prompt pure-prompt-now
 }
+
+lsp-php-server() {
+  npm i intelephense -g
+}
