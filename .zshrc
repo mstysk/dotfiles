@@ -91,7 +91,7 @@ if [[ -s ~/.bengo4rc.sh ]];
     then source ~/.bengo4rc.sh
 fi
 
-function chpwd() { ls -1 }
+function chpwd() { }
 eval "$(anyenv init -)"
 
 
