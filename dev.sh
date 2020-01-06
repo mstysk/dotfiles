@@ -47,18 +47,40 @@ lsp-php-server() {
 }
 
 install-firenvim() {
-    CURRENT_DIR=${PWD}
-    PACKAGE_DIR="${HOME}/packages"
-    makedir ${PACKAGE_DIR}
-    cd ${PACKAGE_DIR}
-    git clone https://git.sr.ht/~glacambre/firenvim
-    cd firenvim
-    npm install
-    npm run build
-    npm run install_manifests
+  CURRENT_DIR=${PWD}
+  PACKAGE_DIR="${HOME}/packages"
+  makedir ${PACKAGE_DIR}
+  cd ${PACKAGE_DIR}
+  git clone https://git.sr.ht/~glacambre/firenvim
+  cd firenvim
+  npm install
+  npm run build
+  npm run install_manifests
 
-    echo '\nPlease setting chrome://extensions, enable Developer mode \n@see https://github.com/glacambre/firenvim#google-chromechromium-specific-steps \n'
-    cd target/chrome
-    echo "target/chrome directory is ${PWD}"
-    cd ${CURRENT_DIR}
+  echo '\nPlease setting chrome://extensions, enable Developer mode \n@see https://github.com/glacambre/firenvim#google-chromechromium-specific-steps \n'
+  cd target/chrome
+  echo "target/chrome directory is ${PWD}"
+  cd ${CURRENT_DIR}
+}
+
+task-completion() {
+  VERSION=2.8.0
+  SITE_FUNCTION=/usr/local/share/zsh/site-functions
+  if [ -f ${SITE_FUNCTION}/_task ]; then
+    echo 'task completion is already installed.'
+    return;
+  fi
+
+  CURRENT_DIR=${PWD}
+  PACKAGE_DIR="${HOME}/packages"
+  makedir ${PACKAGE_DIR}
+  cd ${PACKAGE_DIR}
+  if [ ! -d task-${VERSION} ]; then
+    curl -L -o task-${VERSION}.zip https://github.com/go-task/task/archive/v${VERSION}.zip
+    unzip task-${VERSION}.zip
+  fi
+  cd /usr/local/share/zsh/site-functions
+  ln -s ${PACKAGE_DIR}/task-${VERSION}/completion/zsh/_task _task
+  echo 'task completion installed.'
+  cd ${CURRENT_DIR}
 }
