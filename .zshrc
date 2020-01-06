@@ -49,6 +49,7 @@ prompt pure-now
 
 #
 fpath=(~/.anyframe(N-/) $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 autoload -Uz anyframe-init
 anyframe-init
