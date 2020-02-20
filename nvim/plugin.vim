@@ -55,6 +55,8 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
 
 Plug 'vim-jp/vimdoc-ja'
 
+Plug 'mattn/efm-langserver'
+
 " List ends here. Plug ins become visible to Vim after this call.
 call plug#end()
 

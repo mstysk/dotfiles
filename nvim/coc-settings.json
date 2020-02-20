@@ -30,6 +30,10 @@
                 "DockerFile"
             ],
             "args": ["--stdio"]
+        },
+        "efm": {
+          "command": "efm-langserver",
+          "filetypes": ["markdown"]
         }
     }
 }
