@@ -46,23 +46,6 @@ lsp-php-server() {
   npm i intelephense -g
 }
 
-install-firenvim() {
-  CURRENT_DIR=${PWD}
-  PACKAGE_DIR="${HOME}/packages"
-  makedir ${PACKAGE_DIR}
-  cd ${PACKAGE_DIR}
-  git clone https://git.sr.ht/~glacambre/firenvim
-  cd firenvim
-  npm install
-  npm run build
-  npm run install_manifests
-
-  echo '\nPlease setting chrome://extensions, enable Developer mode \n@see https://github.com/glacambre/firenvim#google-chromechromium-specific-steps \n'
-  cd target/chrome
-  echo "target/chrome directory is ${PWD}"
-  cd ${CURRENT_DIR}
-}
-
 task-completion() {
   VERSION=2.8.0
   SITE_FUNCTION=/usr/local/share/zsh/site-functions
@@ -83,4 +66,9 @@ task-completion() {
   ln -s ${PACKAGE_DIR}/task-${VERSION}/completion/zsh/_task _task
   echo 'task completion installed.'
   cd ${CURRENT_DIR}
+}
+
+lsp-efm() {
+  go get github.com/mattn/efm-langserver
+  npm install -g markdownlint-cli
 }
