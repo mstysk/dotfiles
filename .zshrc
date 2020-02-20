@@ -81,7 +81,7 @@ path=(
     /usr/local/go/bin
     /usr/local/share/git-core/contrib/diff-highlight
     ${GOPATH}/bin
-    echo $(npm bin -g)
+    $(npm bin -g)
     $HOME/.composer/vendor/bin
     $HOME/.rbenv/bin
     $HOME/bin(N-/)
