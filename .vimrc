@@ -1,6 +1,14 @@
 call plug#begin('~/.vim/plugged')
 Plug 'thinca/vim-zenspace' "https://github.com/thinca/vim-zenspace
+Plug 'ryanoasis/vim-devicons' "https://github.com/ryanoasis/vim-devicons
 Plug 'lambdalisue/fern.vim' "https://github.com/lambdalisue/fern.vim
+Plug 'lambdalisue/fern-renderer-devicons.vim' "https://github.com/lambdalisue/fern-renderer-devicons.vim
+Plug 'lambdalisue/fern-comparator-lexical.vim' "https://github.com/lambdalisue/fern-comparator-lexical.vim
+Plug 'junegunn/vim-easy-align' "https://github.com/junegunn/vim-easy-align
+Plug 'machakann/vim-highlightedyank' "https://github.com/machakann/vim-highlightedyank
+Plug 'nathanaelkane/vim-indent-guides' "https://github.com/nathanaelkane/vim-indent-guides
+Plug 'thinca/vim-quickrun' "https://github.com/thinca/vim-quickrun
+Plug 'samuelsimoes/vim-drawer' "https://github.com/samuelsimoes/vim-drawer
 call plug#end()
 
 set helplang=ja,en
@@ -55,3 +63,17 @@ set smarttab
 
 " terminal settings
 tnoremap <silent> <ESC> <C-\><C-n>
+
+" config shortcuts
+nnoremap <silent> <leader>ec :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sc :source $MYVIMRC<CR>
+
+" window resize
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" Fern config
+let g:fern#renderer = "devicons"
+let g:fern#comparator = "lexical"
