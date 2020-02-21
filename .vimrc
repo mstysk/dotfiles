@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
-Plug 'thinca/vim-zenspace'
-Plug 'lambdalisue/fern.vim'
+Plug 'thinca/vim-zenspace' "https://github.com/thinca/vim-zenspace
+Plug 'lambdalisue/fern.vim' "https://github.com/lambdalisue/fern.vim
 call plug#end()
 
 set helplang=ja,en
