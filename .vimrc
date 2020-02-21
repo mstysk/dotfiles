@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
-Plug '~/my-prototype-plugin'
+Plug 'thinca/vim-zenspace'
+Plug 'lambdalisue/fern.vim'
 call plug#end()
 
 set helplang=ja,en
@@ -19,6 +20,9 @@ set signcolumn=yes
 set termguicolors "true colors
 "set spell
 "set spelllang=en,cjk
+
+" list charts
+set listchars=tab:▸\ ,eol:¬
 
 " key mapping change
 let mapleader="\<Space>"
