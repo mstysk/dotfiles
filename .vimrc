@@ -1,3 +1,7 @@
+call plug#begin('~/.vim/plugged')
+Plug '~/my-prototype-plugin'
+call plug#end()
+
 set helplang=ja,en
 syntax on
 set nocompatible
@@ -32,4 +36,18 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
 " clipboard
-set clipboard+=unnamedplus
+set clipboard=unnamed
+
+" cursor
+set cursorline
+hi CursorLine cterm=bold,underline
+
+" tab setting
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+
+" terminal settings
+tnoremap <silent> <ESC> <C-\><C-n>
