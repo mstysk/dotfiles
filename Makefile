@@ -3,11 +3,11 @@ TASK_VERSION = 2.8.0
 PACKAGE_DIR = ${HOME}/packages
 SITE_FUNCTION = /usr/local/share/zsh/site-functions
 
-setup: vimrc task lsp prompt vim-plug
+setup: vimrc task
 	@echo 'setup done.'
 
 .PHONY: vimrc
-vimrc: .vimrc
+vimrc: .vimrc vim-plug lsp vista
 	$( \
 		if $(realpath ${MYVIMRC}), \
 		ls ${VIMRC}, \
@@ -59,3 +59,7 @@ vim-plug:
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	@echo 'vim-plug install done.'
 
+.PHONY: vista
+vista:
+	mkdir -p ~/.vim/pack/git-plugins/start
+	git clone https://github.com/liuchengxu/vista.vim.git --depth=1 ~/.vim/pack/git-plugins/start/vista.vim
