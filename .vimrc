@@ -20,6 +20,7 @@ Plug 'haya14busa/vim-open-googletranslate'
 Plug 'tyru/open-browser.vim'
 Plug 'liuchengxu/vista.vim' " https://github.com/liuchengxu/vista.vim
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'lambdalisue/gina.vim'
 call plug#end()
 
 set helplang=ja,en
