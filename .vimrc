@@ -162,3 +162,4 @@ let g:vista_ctags_cmd = {
     \ 'haskell': 'hasktags -x -o - -c',
     \ }
 let g:vista_fzf_preview = ['right:50%']
+noremap <leader>vi :Vista<CR>
