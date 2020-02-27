@@ -63,14 +63,15 @@ autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 
 # ls
-alias ls="exa -G" # color for darwin
-alias l="exa -la"
-alias la="exa -la"
-alias l1="exa -1"
+alias ls="ls -G" # color for darwin
+alias l="ls -la"
+alias la="ls -la"
+alias l1="ls -1"
 alias gc=anyframe-widget-checkout-git-branch
 alias sl=anyframe-selector-auto
 alias hi=anyframe-widget-execute-history
 alias cdr=anyframe-widget-cdr
+alias cat=bat
 
 typeset -U path cdpath fpath manpath
 export GOPATH=${HOME}/go

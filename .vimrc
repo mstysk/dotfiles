@@ -15,12 +15,15 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'KeitaNakamura/neodark.vim' " https://github.com/KeitaNakamura/neodark.vim
+Plug 'smallwat3r/vim-simplicity' " https://github.com/smallwat3r/vim-simplicity
+Plug 'olivertaylor/vacme' " https://github.com/olivertaylor/vacme
 Plug 'vim-jp/vimdoc-ja'
-Plug 'haya14busa/vim-open-googletranslate'
 Plug 'tyru/open-browser.vim'
 Plug 'liuchengxu/vista.vim' " https://github.com/liuchengxu/vista.vim
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'lambdalisue/gina.vim'
+Plug 'tsuyoshicho/vim-efm-langserver-settings'
+Plug 'skanehira/translate.vim'
 call plug#end()
 
 set helplang=ja,en
@@ -126,9 +129,6 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 set completeopt+=preview
 
-" google translate
-let g:opengoogletranslate#openbrowsercmd = 'electron-open --without-forcus'
-
 " language server protocol short cuts
 nmap <silent> gd <Plug>(lsp-definition)
 nmap <silent> gy <Plug>(lsp-type-definition))
@@ -163,3 +163,8 @@ let g:vista_ctags_cmd = {
     \ }
 let g:vista_fzf_preview = ['right:50%']
 noremap <leader>vi :Vista<CR>
+
+" open browser
+let g:netrw_nogx = 1
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
