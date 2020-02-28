@@ -24,6 +24,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'lambdalisue/gina.vim'
 Plug 'tsuyoshicho/vim-efm-langserver-settings'
 Plug 'skanehira/translate.vim'
+Plug 'previm/previm'
 call plug#end()
 
 set helplang=ja,en
