@@ -81,9 +81,6 @@ set softtabstop=4
 set expandtab
 set smarttab
 
-" terminal settings
-tnoremap <silent> <ESC> <C-\><C-n>
-
 " configure shortcuts
 nnoremap <silent> <leader>ec :e $MYVIMRC<CR>
 nnoremap <silent> <leader>sc :source $MYVIMRC<CR>
@@ -169,3 +166,16 @@ noremap <leader>vi :Vista<CR>
 let g:netrw_nogx = 1
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+" terminal setting @see https://qiita.com/Sylba2050/items/d215abc626d811f49775
+tnoremap <silent> <ESC> <C-\><C-n>
+set splitbelow
+set termwinsize=7x0
+
+function! TermOpen()
+    if empty(term_list())
+        execute "terminal"
+    endif
+endfunction
+
+noremap <leader>t :call TermOpen()<CR>
