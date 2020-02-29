@@ -9,13 +9,12 @@ default:
 setup: vimrc task
 	@echo 'setup done.'
 
+.PHONY: vimsetup
+vimsetup: vimrc vim-plug lsp vista
+
 .PHONY: vimrc
-vimrc: .vimrc vim-plug lsp vista
-	$( \
-		if $(realpath ${MYVIMRC}), \
-		ls ${VIMRC}, \
-		ln -s ${DOTFILEPATH}/.vimrc ${MYVIMRC} \
-	)
+vimrc:
+	ln -s ${DOTFILEPATH}/vimrc ${HOME}/.vimrc
 	@echo 'vimrc setup done.'
 
 .PHONY: lsp
