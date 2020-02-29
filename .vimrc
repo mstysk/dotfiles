@@ -25,6 +25,7 @@ Plug 'lambdalisue/gina.vim'
 Plug 'tsuyoshicho/vim-efm-langserver-settings'
 Plug 'skanehira/translate.vim'
 Plug 'previm/previm'
+Plug 'Rigellute/rigel'
 call plug#end()
 
 set helplang=ja,en
@@ -50,7 +51,8 @@ set wildmode=full
 set listchars=tab:▸\ ,eol:¬
 
 " color schema
-colorscheme neodark
+colorscheme rigel
+set termguicolors
 
 " key mapping change
 let mapleader="\<Space>"
