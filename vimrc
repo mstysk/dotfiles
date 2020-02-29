@@ -26,6 +26,8 @@ Plug 'tsuyoshicho/vim-efm-langserver-settings'
 Plug 'skanehira/translate.vim'
 Plug 'previm/previm'
 Plug 'Rigellute/rigel'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 set helplang=ja,en
@@ -181,3 +183,7 @@ function! TermOpen()
 endfunction
 
 noremap <leader>t :call TermOpen()<CR>
+
+" airline
+let g:rigel_airline = 1
+let g:airline_theme = 'rigel'
