@@ -3,6 +3,9 @@ TASK_VERSION = 2.8.0
 PACKAGE_DIR = ${HOME}/packages
 SITE_FUNCTION = /usr/local/share/zsh/site-functions
 
+default:
+	@echo 'usage make target'
+
 setup: vimrc task
 	@echo 'setup done.'
 
@@ -63,3 +66,13 @@ vim-plug:
 vista:
 	mkdir -p ~/.vim/pack/git-plugins/start
 	git clone https://github.com/liuchengxu/vista.vim.git --depth=1 ~/.vim/pack/git-plugins/start/vista.vim
+	@echo 'vista install done.'
+
+.PHONY: gtran
+gtran:
+	$( \
+		if ($(shell which gtran)) \
+		which gtran \
+		cd ${PACKAGE_DIR} && git clone https://github.com/skanehira/gtran.git && cd gtran && go install \
+	)
+	@echo 'gtran install done.'
