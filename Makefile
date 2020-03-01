@@ -2,6 +2,7 @@ DOTFILEPATH = ${HOME}/dotfiles
 TASK_VERSION = 2.8.0
 PACKAGE_DIR = ${HOME}/packages
 SITE_FUNCTION = /usr/local/share/zsh/site-functions
+RUNTIME_PATH = ${HOME}/.vim/autoload
 
 default:
 	@echo 'usage make target'
@@ -75,3 +76,9 @@ gtran:
 		cd ${PACKAGE_DIR} && git clone https://github.com/skanehira/gtran.git && cd gtran && go install \
 	)
 	@echo 'gtran install done.'
+
+.PHONY: tabnine
+tabnine:
+	cd ${RUNTIME_PATH}
+	git clone --depth 1 https://github.com/zxqfl/tabnine-vim
+	@echo 'tabnine install done.'

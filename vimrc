@@ -28,6 +28,7 @@ Plug 'previm/previm'
 Plug 'Rigellute/rigel'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'zxqfl/tabnine-vim'
 call plug#end()
 
 set helplang=ja,en
