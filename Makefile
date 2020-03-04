@@ -82,3 +82,8 @@ tabnine:
 	cd ${RUNTIME_PATH}
 	git clone --depth 1 https://github.com/zxqfl/tabnine-vim
 	@echo 'tabnine install done.'
+
+.PHONY: zshrc
+zshrc:
+	ln -s ${DOTFILEPATH}/zshrc ${HOME}/.zshrc
+	@echo 'zshrc setup done.'
