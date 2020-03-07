@@ -87,3 +87,8 @@ tabnine:
 zshrc:
 	ln -s ${DOTFILEPATH}/zshrc ${HOME}/.zshrc
 	@echo 'zshrc setup done.'
+
+.PHONY: doctoc
+doctoc:
+	npm install -g doctoc
+	@echo 'doctoc install done.'
