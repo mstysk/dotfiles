@@ -29,6 +29,8 @@ Plug 'Rigellute/rigel'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'zxqfl/tabnine-vim'
+Plug 'cohama/lexima.vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set helplang=ja,en
@@ -188,3 +190,7 @@ noremap <leader>t :call TermOpen()<CR>
 " airline
 let g:rigel_airline = 1
 let g:airline_theme = 'rigel'
+
+" quick run
+let g:quickrun_no_default_key_mappings = 1
+nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
