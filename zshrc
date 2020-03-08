@@ -48,13 +48,17 @@ autoload -U compinit
 compinit -u
 
 # paths
-fpath=(/usr/local/share/zsh-completions $fpath)
-
+PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/icu4c/lib/pkgconfig"
+PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/openssl/lib/pkgconfig"
 GOPATH=${HOME}/go
+fpath=(/usr/local/share/zsh-completions $fpath)
 path=(
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     /usr/local/opt/bison/bin(N-/)
+    /usr/local/opt/openssl/bin(N-/)
+    /usr/local/opt/icu4c/bin(N-/)
+    /usr/local/opt/icu4c/sbin(N-/)
     ${GOPATH}/bin(N-/)
     $(npm bin -g)
     $HOME/.composer/vendor/bin(N-/)

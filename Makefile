@@ -121,5 +121,5 @@ asdf:
 	brew install asdf
 	# dependencies
 	brew install \
-	coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc unzip curl bison
+	coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc unzip curl bison re2c openssl icu4c
 	@echo asdf install done.
