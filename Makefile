@@ -3,6 +3,9 @@ TASK_VERSION = 2.8.0
 PACKAGE_DIR = ${HOME}/packages
 SITE_FUNCTION = /usr/local/share/zsh/site-functions
 RUNTIME_PATH = ${HOME}/.vim/autoload
+LOCAL_BIN = /usr/local/bin
+CONTRIB_PATH = /usr/local/share/git-core/contrib
+
 
 default:
 	@echo 'usage make target'
@@ -17,6 +20,11 @@ vimsetup: vimrc vim-plug lsp vista
 vimrc:
 	ln -s ${DOTFILEPATH}/vimrc ${HOME}/.vimrc
 	@echo 'vimrc setup done.'
+
+.PHONY: git-config
+git-config:
+	ln -s ${DOTFILEPATH}/gitconfig ${HOME}/.gitconfig
+	@echo 'git config setup done.'
 
 .PHONY: lsp
 lsp: lsp-php
@@ -50,11 +58,6 @@ task-completion:
 		ln -s ${PACKAGE_DIR}/task-{$VERSION}/completion/zsh/_task ${SITE_FUNCTION}/_task \
 	)
 	@echo 'task completion done.'
-
-.PHONY: prompt
-prompt:
-	npm install --global pure-prompt pure-prompt-now
-	@echo 'prompt install done.'
 
 .PHONY: vim-plug
 vim-plug:
@@ -92,3 +95,13 @@ zshrc:
 doctoc:
 	npm install -g doctoc
 	@echo 'doctoc install done.'
+
+.PHONY: diff-highlight
+diff-highlight:
+	ln -s ${CONTRIB_PATH}/diff-highlight/diff-highlight ${LOCAL_BIN}/diff-highlight
+	@echo diff-highlight install done.
+
+.PHONY: git-new-workdir
+git-new-workdir:
+	ln -s ${CONTRIB_PATH}/workdir/git-new-workdir ${LOCAL_BIN}/git-new-work-dir
+	@echo git work dir install done.
