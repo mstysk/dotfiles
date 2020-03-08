@@ -54,6 +54,7 @@ GOPATH=${HOME}/go
 path=(
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
+    /usr/local/opt/bison/bin(N-/)
     ${GOPATH}/bin(N-/)
     $(npm bin -g)
     $HOME/.composer/vendor/bin(N-/)
@@ -72,3 +73,5 @@ alias hi=anyframe-widget-execute-history
 alias cdr=anyframe-widget-cdr
 alias cat=bat
 
+# asdf package manager
+. /usr/local/opt/asdf/asdf.sh

@@ -116,3 +116,10 @@ emojify:
 	brew install emojify
 	@echo emojify install done.
 
+.PHONY: asdf
+asdf:
+	brew install asdf
+	# dependencies
+	brew install \
+	coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc unzip curl bison
+	@echo asdf install done.
