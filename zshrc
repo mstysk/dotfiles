@@ -40,6 +40,9 @@ zinit light zsh-users/zsh-history-substring-search
 zinit light zsh-users/zsh-completions
 zinit light mollifier/anyframe
 
+# set vim mode
+set -o vi
+
 # complition
 autoload -U compinit
 compinit -u
