@@ -51,13 +51,10 @@ GOPATH=${HOME}/go
 path=(
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
-    /usr/local/go/bin
-    /usr/local/share/git-core/contrib/diff-highlight
-    ${GOPATH}/bin
+    ${GOPATH}/bin(N-/)
     $(npm bin -g)
-    $HOME/.composer/vendor/bin
-    $HOME/.rbenv/bin
-    $HOME/bin(N-/)
+    $HOME/.composer/vendor/bin(N-/)
+    $HOME/.bin(N-/)
     $path
 )
 
