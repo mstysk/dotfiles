@@ -111,3 +111,8 @@ bat:
 	brew install bat
 	@echo install bat done.
 
+.PHONY: emojify
+emojify:
+	brew install emojify
+	@echo emojify install done.
+
