@@ -105,3 +105,9 @@ diff-highlight:
 git-new-workdir:
 	ln -s ${CONTRIB_PATH}/workdir/git-new-workdir ${LOCAL_BIN}/git-new-work-dir
 	@echo git work dir install done.
+	
+.PHONY: bat
+bat:
+	brew install bat
+	@echo install bat done.
+
