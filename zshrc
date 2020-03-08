@@ -31,11 +31,11 @@ zinit light-mode for \
 #- For-Syntax article on the Wiki; it is less directly related to the ices, however, it explains how to use them conveniently:
 #    - https://zdharma.org/zinit/wiki/For-Syntax/.
 zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
 zinit load zdharma/history-search-multi-word # Ctrl-R
 
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-history-substring-search
 zinit light zsh-users/zsh-completions
 zinit light mollifier/anyframe
