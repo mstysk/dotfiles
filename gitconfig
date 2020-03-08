@@ -1,0 +1,46 @@
+[core]
+	excludesfile = /Users/yoshioka/.gitignore_global
+	editor = vim
+	page = vim -R
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = yoshioka
+	email = yoshioka@bengo4.com
+[merge]
+	conflicttstyle = diff3
+	tool = vimdiff
+	conflictstyle = diff3
+[alias]
+    # いい感じのグラフでログを表示
+    graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+        # 上の省略形
+    gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+    st = status
+    cm = commit
+        # Untracked filesを表示せず，not stagedと，stagedだけの状態を出力する
+    stt = status -uno
+        # 行ごとの差分じゃなくて，単語レベルでの差分を色付きで表示する
+    difff = diff --word-diff
+    currnet = symbolic-ref --short HEAD
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[mergetool]
+	prompt = false
+[grep]
+	lineNumber = true
+	patternType = extended
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+[color "diff-highlight"]
+oldHighlight = ul
+oldReset = noul
