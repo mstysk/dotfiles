@@ -28,11 +28,12 @@ Plug 'previm/previm'
 Plug 'Rigellute/rigel'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'zxqfl/tabnine-vim'
+" Plug 'zxqfl/tabnine-vim'
 Plug 'cohama/lexima.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'phpstan/vim-phpstan'
 Plug 'dense-analysis/ale'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 set helplang=ja,en
@@ -196,3 +197,9 @@ let g:airline_theme = 'rigel'
 " quick run
 let g:quickrun_no_default_key_mappings = 1
 nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
+
+" nerdtree
+nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+autocmd vimEnter * NERDTree
+

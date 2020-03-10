@@ -133,3 +133,12 @@ asdf:
 php-stan:
 	composer global require nette/neon phpstan/phpstan mglaman/drupal-check
 	@echo phpstan intaslled.
+
+.PHONY: tldr
+tldr:
+	npm install -g tldr
+	@echo tldr installed.
+
+.PHONY: ack
+	brew install ack
+	@echo ack installed.

@@ -83,3 +83,7 @@ alias cat=bat
 . /usr/local/opt/asdf/asdf.sh
 NODEJS_CHECK_SIGNATURES=no #証明書の検証をしないにしてるけど、ちゃんとするようにしたい
 
+# fzf customize
+if [[ -f ${HOME}/dotfiles/fzf.sh ]]; then
+    source ${HOME}/dotfiles/fzf.sh
+fi
