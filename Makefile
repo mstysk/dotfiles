@@ -21,6 +21,11 @@ vimrc:
 	ln -s ${DOTFILEPATH}/vimrc ${HOME}/.vimrc
 	@echo 'vimrc setup done.'
 
+.PHONY:
+asdfrc:
+	ln -s ${DOTFILEPATH}/asdfrc ${HOME}/.asdfrc
+	@echo 'asdfrc setup done.'
+
 .PHONY: git-config
 git-config:
 	ln -s ${DOTFILEPATH}/gitconfig ${HOME}/.gitconfig
@@ -121,5 +126,10 @@ asdf:
 	brew install asdf
 	# dependencies
 	brew install \
-	coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc unzip curl bison re2c openssl icu4c
+	coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc unzip curl bison re2c openssl icu4c libiconv zlib
 	@echo asdf install done.
+
+.PHONY: php-stan
+php-stan:
+	composer global require nette/neon phpstan/phpstan mglaman/drupal-check
+	@echo phpstan intaslled.

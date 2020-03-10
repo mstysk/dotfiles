@@ -31,6 +31,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'zxqfl/tabnine-vim'
 Plug 'cohama/lexima.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'phpstan/vim-phpstan'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 set helplang=ja,en

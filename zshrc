@@ -48,8 +48,10 @@ autoload -U compinit
 compinit -u
 
 # paths
-PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/icu4c/lib/pkgconfig"
+PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/openssl/lib/pkgconfig"
+PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/zlib/lib/pkgconfig"
+export PKG_CONFIG_PATH
 GOPATH=${HOME}/go
 fpath=(/usr/local/share/zsh-completions $fpath)
 path=(
@@ -79,3 +81,5 @@ alias cat=bat
 
 # asdf package manager
 . /usr/local/opt/asdf/asdf.sh
+NODEJS_CHECK_SIGNATURES=no #証明書の検証をしないにしてるけど、ちゃんとするようにしたい
+
