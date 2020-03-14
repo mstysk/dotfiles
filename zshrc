@@ -87,3 +87,6 @@ NODEJS_CHECK_SIGNATURES=no #証明書の検証をしないにしてるけど、�
 if [[ -f ${HOME}/dotfiles/fzf.sh ]]; then
     source ${HOME}/dotfiles/fzf.sh
 fi
+
+# grep
+export GREP_OPTIONS='--color=auto'
