@@ -1,5 +1,6 @@
 DOTFILEPATH = ${HOME}/dotfiles
 TASK_VERSION = 2.8.0
+CHEAT_VERSION = 3.7.1
 PACKAGE_DIR = ${HOME}/packages
 SITE_FUNCTION = /usr/local/share/zsh/site-functions
 RUNTIME_PATH = ${HOME}/.vim/autoload
@@ -140,5 +141,13 @@ tldr:
 	@echo tldr installed.
 
 .PHONY: ack
+ack:
 	brew install ack
 	@echo ack installed.
+
+cheat:
+	rm -rf ${PACKAGE_DIR}/cheat-* ${LOCAL_BIN}/cheat
+	curl -L -o ${PACKAGE_DIR}/cheat-${CHEAT_VERSION}.gz https://github.com/cheat/cheat/releases/download/${CHEAT_VERSION}/cheat-darwin-amd64.gz
+	yes | gunzip ${PACKAGE_DIR}/cheat-${CHEAT_VERSION}.gz
+	chmod 755 ${PACKAGE_DIR}/cheat-${CHEAT_VERSION}
+	mv ${PACKAGE_DIR}/cheat-${CHEAT_VERSION} ${LOCAL_BIN}/cheat
