@@ -29,11 +29,12 @@ Plug 'Rigellute/rigel'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'zxqfl/tabnine-vim'
-Plug 'cohama/lexima.vim'
+" Plug 'cohama/lexima.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'phpstan/vim-phpstan'
 Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree'
+Plug 'mattn/vim-sonictemplate'
 call plug#end()
 
 set helplang=ja,en
@@ -203,3 +204,8 @@ nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 autocmd vimEnter * NERDTree
 
+" sonictemplate
+let g:sonictemplate_vim_template_dir = [
+\ '$HOME/.vim/template',
+\ '$HOME/dotfiles/template'
+\]
