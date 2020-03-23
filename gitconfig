@@ -40,3 +40,12 @@
 [color "diff-highlight"]
     oldHighlight = ul
     oldReset = noul
+[diff]
+	noprefix = true
+[fetch]
+	prune = true
+[rebase]
+	autosquash = true
+	autostash = true
+[pull]
+	rebase = merges
