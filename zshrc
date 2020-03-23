@@ -51,7 +51,9 @@ compinit -u
 PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/openssl/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/zlib/lib/pkgconfig"
-export PKG_CONFIG_PATH
+NEXTWORD_DATA_PATH="${HOME}/.data/nextword-data"
+export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
+
 GOPATH=${HOME}/go
 fpath=(/usr/local/share/zsh-completions $fpath)
 path=(

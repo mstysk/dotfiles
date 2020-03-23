@@ -12,6 +12,7 @@ Plug 'samuelsimoes/vim-drawer' "https://github.com/samuelsimoes/vim-drawer
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'high-moctane/asyncomplete-nextword.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'KeitaNakamura/neodark.vim' " https://github.com/KeitaNakamura/neodark.vim
@@ -209,3 +210,10 @@ let g:sonictemplate_vim_template_dir = [
 \ '$HOME/.vim/template',
 \ '$HOME/dotfiles/template'
 \]
+
+call asyncomplete#register_source(asyncomplete#sources#nextword#get_source_options({
+\   'name': 'nextword',
+\   'whitelist': ['*'],
+\   'args': ['-n', '10000'],
+\   'completor': function('asyncomplete#sources#nextword#completor')
+\   }))

@@ -6,6 +6,7 @@ SITE_FUNCTION = /usr/local/share/zsh/site-functions
 RUNTIME_PATH = ${HOME}/.vim/autoload
 LOCAL_BIN = /usr/local/bin
 CONTRIB_PATH = /usr/local/share/git-core/contrib
+DATA_DIR = ~/.data
 
 
 default:
@@ -145,9 +146,26 @@ ack:
 	brew install ack
 	@echo ack installed.
 
+.PHONY: cheat
 cheat:
 	rm -rf ${PACKAGE_DIR}/cheat-* ${LOCAL_BIN}/cheat
 	curl -L -o ${PACKAGE_DIR}/cheat-${CHEAT_VERSION}.gz https://github.com/cheat/cheat/releases/download/${CHEAT_VERSION}/cheat-darwin-amd64.gz
 	yes | gunzip ${PACKAGE_DIR}/cheat-${CHEAT_VERSION}.gz
 	chmod 755 ${PACKAGE_DIR}/cheat-${CHEAT_VERSION}
 	mv ${PACKAGE_DIR}/cheat-${CHEAT_VERSION} ${LOCAL_BIN}/cheat
+
+.PHONY:cica-font
+cica-font:
+	rm -rf ${PACKAGE_DIR}/Cica
+	git clone --depth 1 https://github.com/miiton/Cica.git ${PACKAGE_DIR}/Cica
+	cd ${PACKAGE_DIR}/Cica &&  docker-compose build && docker-compose run --rm cica
+	mv ${PACKAGE_DIR}/Cica/dist ~/Library/Fonts/Cica/
+	rm -rf ${PACKAGE_DIR}/Cica
+
+nextword-data: #https://github.com/high-moctane/nextword-data/releases
+	curl -L -o ${PACKAGE_DIR}/nextword.tar.gz https://github.com/high-moctane/nextword-data/archive/small.tar.gz
+	cd ${PACKAGE_DIR} && tar zxf nextword.tar.gz
+	mv ${PACKAGE_DIR}/nextword-data-small ${DATA_DIR}/nextword-data
+
+nextword:
+	go get -u github.com/high-moctane/nextword
