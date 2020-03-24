@@ -61,6 +61,11 @@ set wildmode=full
 " list charts
 set listchars=tab:▸\ ,eol:¬
 
+" window color
+autocmd ColorScheme * highlight NormalNC guifg=#a0a0a0 guibg=#121212
+autocmd WinEnter,BufWinEnter * setlocal wincolor=
+autocmd WinLeave * setlocal wincolor=NormalNC
+
 " color schema
 colorscheme rigel
 set termguicolors
