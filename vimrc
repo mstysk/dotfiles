@@ -36,6 +36,7 @@ Plug 'phpstan/vim-phpstan'
 Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/vim-sonictemplate'
+Plug 'lighttiger2505/sqls.vim'
 call plug#end()
 
 set helplang=ja,en
@@ -217,3 +218,21 @@ call asyncomplete#register_source(asyncomplete#sources#nextword#get_source_optio
 \   'args': ['-n', '10000'],
 \   'completor': function('asyncomplete#sources#nextword#completor')
 \   }))
+
+" sqls
+if executable('sqls')
+    augroup LspSqls
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'sqls',
+                    \ 'cmd': {server_info->['sqls']},
+                    \ 'whitelist': ['sql'],
+                    \ 'workspace_config': {
+                    \     'sqls': {
+                    \        'driver': 'mysql',
+                    \        'dataSourceName': 'root:root@tcp(127.0.0.1:11001)/authense'
+                    \     },
+                    \ },
+                    \})
+    augroup END
+endif

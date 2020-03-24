@@ -162,10 +162,17 @@ cica-font:
 	mv ${PACKAGE_DIR}/Cica/dist ~/Library/Fonts/Cica/
 	rm -rf ${PACKAGE_DIR}/Cica
 
+.PHONY: nextword-data
 nextword-data: #https://github.com/high-moctane/nextword-data/releases
 	curl -L -o ${PACKAGE_DIR}/nextword.tar.gz https://github.com/high-moctane/nextword-data/archive/small.tar.gz
 	cd ${PACKAGE_DIR} && tar zxf nextword.tar.gz
 	mv ${PACKAGE_DIR}/nextword-data-small ${DATA_DIR}/nextword-data
 
+.PHONY: nextword
 nextword:
 	go get -u github.com/high-moctane/nextword
+
+
+.PHONY: sqls
+sqls:
+	go get github.com/lighttiger2505/sqls
