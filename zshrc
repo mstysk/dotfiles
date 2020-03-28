@@ -92,3 +92,7 @@ fi
 
 # grep
 export GREP_OPTIONS='--color=auto'
+
+if [[ "${VIM_EDITERM_SETUP}" != "" ]]; then
+  source "${VIM_EDITERM_SETUP}"
+fi

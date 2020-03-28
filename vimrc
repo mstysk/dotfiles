@@ -186,17 +186,17 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
 " terminal setting @see https://qiita.com/Sylba2050/items/d215abc626d811f49775
-tnoremap <silent> <ESC> <C-\><C-n>
-set splitbelow
-set termwinsize=7x0
-
-function! TermOpen()
-    if empty(term_list())
-        execute "terminal"
-    endif
-endfunction
-
-noremap <leader>t :call TermOpen()<CR>
+" tnoremap <silent> <ESC> <C-\><C-n>
+tnoremap <Esc> <C-W>N
+tnoremap <Esc><Esc> <C-W>N
+tnoremap <C-v> <C-W>"+<CR>
+autocmd TerminalOpen * if &buftype == 'terminal' |
+    \ setlocal bufhidden=hide | setlocal scl=no | setlocal nonu |
+    \ let t:send_to_term = +expand('<abuf>') |
+    \ endif
+" @see https://github.com/vim/vim/issues/2716 terminal arrow key active
+set timeout timeoutlen=1000  " Default
+set ttimeout ttimeoutlen=100  " Set by defaults.vim
 
 " airline
 let g:rigel_airline = 1
