@@ -37,6 +37,12 @@ Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/vim-sonictemplate'
 Plug 'lighttiger2505/sqls.vim'
+Plug 'schickling/vim-bufonly'
+Plug 'mhinz/vim-startify' " https://github.com/mhinz/vim-startify#installation-and-documentation
+Plug 'gu-fan/simpleterm.vim'
+Plug 'kyoh86/vim-editerm'
+Plug 'AndrewRadev/linediff.vim'
+Plug 'preservim/nerdcommenter'
 call plug#end()
 
 set helplang=ja,en
@@ -128,7 +134,7 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-let g:asyncomplete_auto_popup = 0
+let g:asyncomplete_auto_popup = 1
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -144,6 +150,9 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 set completeopt+=preview
+
+" lsp settings
+let g:lsp_fold_enabled = 0
 
 " language server protocol short cuts
 nmap <silent> gd <Plug>(lsp-definition)
@@ -166,6 +175,9 @@ noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 noremap ff :Leaderf file --popup<CR>
+
+let g:Lf_ShowDevIcons = 1
+set ambiwidth=double
 
 " Vista
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -209,7 +221,6 @@ nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 " nerdtree
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-autocmd vimEnter * NERDTree
 
 " sonictemplate
 let g:sonictemplate_vim_template_dir = [
@@ -241,3 +252,29 @@ if executable('sqls')
                     \})
     augroup END
 endif
+
+" comand history 不要な設定は削除 @see https://qiita.com/monaqa/items/e22e6f72308652fc81e2
+autocmd CmdwinEnter : g/^qa\?!\?$/d
+autocmd CmdwinEnter : g/^wq\?a\?!\?$/d
+
+" startify
+let g:startify_lists = [
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+let g:startify_commands = [
+    \ ':help reference',
+    \ ['Vim Reference', 'h ref'],
+    \ {'h': 'h ref'},
+    \ ]
+
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 0
+
+" ale
+let g:ale_disable_lsp = 1
+let g:ale_fixers = {'php': ['php_cs_fixer']}
+let g:ale_fix_on_save = 1
