@@ -176,3 +176,9 @@ nextword:
 .PHONY: sqls
 sqls:
 	go get github.com/lighttiger2505/sqls
+
+.PHONY: vcpkg
+vcpkg:
+	cd ${PACKAGE_DIR} && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && ./bootstrap-vcpkg.sh
+	cp ${PACKAGE_DIR}/vcpkg/vcpkg ${LOCAL_BIN}/vcpkg
+	rm -rf ${PACKAGE_DIR}/vcpkg
