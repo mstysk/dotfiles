@@ -15,6 +15,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'high-moctane/asyncomplete-nextword.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'KeitaNakamura/neodark.vim' " https://github.com/KeitaNakamura/neodark.vim
 Plug 'smallwat3r/vim-simplicity' " https://github.com/smallwat3r/vim-simplicity
 Plug 'olivertaylor/vacme' " https://github.com/olivertaylor/vacme
@@ -43,6 +46,7 @@ Plug 'gu-fan/simpleterm.vim'
 Plug 'kyoh86/vim-editerm'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'preservim/nerdcommenter'
+Plug 'mattn/vim-findroot'
 call plug#end()
 
 set helplang=ja,en
@@ -278,3 +282,10 @@ let g:startify_change_to_vcs_root = 0
 let g:ale_disable_lsp = 1
 let g:ale_fixers = {'php': ['php_cs_fixer']}
 let g:ale_fix_on_save = 1
+let g:ale_php_phpcs_standard = 'PSR2'
+
+" findroot
+let g:findroot_patterns = [
+    \ 'composer.json',
+    \ '.git',
+    \]
