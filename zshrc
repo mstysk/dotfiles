@@ -1,5 +1,6 @@
 
-### Added by Zinit's installer
+alias dircolors="gdircolors"
+# Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -12,33 +13,24 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
+zinit load zdharma/history-search-multi-word # Ctrl-R
+zinit ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
+    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+zinit light trapd00r/LS_COLORS
+zinit ice pick"async.zsh" src"pure.zsh"
+
 zinit light-mode for \
     zinit-zsh/z-a-patch-dl \
     zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-bin-gem-node
+    zinit-zsh/z-a-bin-gem-node \
+    zsh-users/zsh-autosuggestions \
+    zdharma/fast-syntax-highlighting \
+    sindresorhus/pure \
+    zsh-users/zsh-history-substring-search \
+    zsh-users/zsh-completions \
+    mollifier/anyframe
 
-### End of Zinit's installer chunk
-#
-##For more information see:
-#- README section on the ice-modifiers:
-#    - https://github.com/zdharma/zinit#ice-modifiers,
-#- intro to Zinit at the Wiki:
-#    - https://zdharma.org/zinit/wiki/INTRODUCTION/,
-#- zinit-zsh GitHub account, which holds all the available Zinit annexes:
-#    - https://github.com/zinit-zsh/,
-#- For-Syntax article on the Wiki; it is less directly related to the ices, however, it explains how to use them conveniently:
-#    - https://zdharma.org/zinit/wiki/For-Syntax/.
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma/fast-syntax-highlighting
-zinit load zdharma/history-search-multi-word # Ctrl-R
-
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
-zinit light zsh-users/zsh-history-substring-search
-zinit light zsh-users/zsh-completions
-zinit light mollifier/anyframe
 
 # set vim mode
 set -o vi
@@ -63,6 +55,7 @@ path=(
     /usr/local/opt/openssl/bin(N-/)
     /usr/local/opt/icu4c/bin(N-/)
     /usr/local/opt/icu4c/sbin(N-/)
+    /usr/local/opt/llvm/bin(N-/)
     ${GOPATH}/bin(N-/)
     $(npm bin -g)
     $HOME/.composer/vendor/bin(N-/)
@@ -71,7 +64,7 @@ path=(
 )
 
 # alias
-alias ls="ls -G" # color for darwin
+alias ls="gls --color=auto"
 alias l="ls -la"
 alias la="ls -la"
 alias l1="ls -1"
@@ -96,3 +89,12 @@ export GREP_OPTIONS='--color=auto'
 if [[ "${VIM_EDITERM_SETUP}" != "" ]]; then
   source "${VIM_EDITERM_SETUP}"
 fi
+
+# starship
+#export STARSHIP_CONFIG="~/dotfiles/starship.toml"
+#eval "$(starship init zsh)"
+
+# nim
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
