@@ -1,0 +1,7 @@
+function\.\(\S\+\)$
+    /**
+     *
+     **/
+    public function {{$1}}
+    {
+    }

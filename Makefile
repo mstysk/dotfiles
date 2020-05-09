@@ -186,3 +186,7 @@ vcpkg:
 .PHONY: coreutils
 coreutils:
 	brew install coreutils
+
+.PHONY: ctags
+ctags:
+	brew install --HEAD universal-ctags/universal-ctags/universal-ctags

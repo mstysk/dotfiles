@@ -8,11 +8,11 @@ Plug 'junegunn/vim-easy-align' "https://github.com/junegunn/vim-easy-align
 Plug 'machakann/vim-highlightedyank' "https://github.com/machakann/vim-highlightedyank
 Plug 'nathanaelkane/vim-indent-guides' "https://github.com/nathanaelkane/vim-indent-guides
 Plug 'thinca/vim-quickrun' "https://github.com/thinca/vim-quickrun
-Plug 'samuelsimoes/vim-drawer' "https://github.com/samuelsimoes/vim-drawer
+" Plug 'samuelsimoes/vim-drawer' "https://github.com/samuelsimoes/vim-drawer
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'high-moctane/asyncomplete-nextword.vim'
+" Plug 'high-moctane/asyncomplete-nextword.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
@@ -47,6 +47,8 @@ Plug 'kyoh86/vim-editerm'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/vim-findroot'
+Plug 'easymotion/vim-easymotion'
+" Plug 'vim-vdebug/vdebug'
 call plug#end()
 
 set helplang=ja,en
@@ -67,6 +69,11 @@ set spell
 set spelllang=en,cjk
 set wildmenu
 set wildmode=full
+set hlsearch
+set incsearch
+set sb " split開く時に下にだす
+nos
+" set foldmethod=indent
 
 " list charts
 set listchars=tab:▸\ ,eol:¬
@@ -111,26 +118,26 @@ set smarttab
 
 " configure shortcuts
 nnoremap <silent> <leader>ec :e $MYVIMRC<CR>
-nnoremap <silent> <leader>sc :source $MYVIMRC<CR>
+nnoremap <silent> <leader>load :source $MYVIMRC<CR>
 
 " window resize
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " Fern configure
 let g:fern#renderer = "devicons"
 let g:fern#comparator = "lexical"
 
 function! s:init_fern() abort
-  " Use 'select' instead of 'edit' for default 'open' action
-  nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
+    " Use 'select' instead of 'edit' for default 'open' action
+    nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
 endfunction
 
 augroup fern-custom
-  autocmd! *
-  autocmd FileType fern call s:init_fern()
+    autocmd! *
+    autocmd FileType fern call s:init_fern()
 augroup END
 
 " auto completion
@@ -146,9 +153,9 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ asyncomplete#force_refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ asyncomplete#force_refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -168,9 +175,6 @@ nmap <silent> ]c <Plug>(lsp-next-error)
 nmap <silent> E <Plug>(lsp-document-diagnostics)
 nnoremap <silent> K :LspHover<CR>
 
-" VimDrawer
-noremap <Leader><Leader> :VimDrawer<CR>
-
 " Leaderf
 let g:Lf_PreviewInPopup = 1
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
@@ -187,12 +191,12 @@ set ambiwidth=double
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
-  \ 'cpp': 'vim_lsp',
-  \ 'php': 'vim_lsp',
-  \ }
+            \ 'cpp': 'vim_lsp',
+            \ 'php': 'vim_lsp',
+            \ }
 let g:vista_ctags_cmd = {
-    \ 'haskell': 'hasktags -x -o - -c',
-    \ }
+            \ 'haskell': 'hasktags -x -o - -c',
+            \ }
 let g:vista_fzf_preview = ['right:50%']
 noremap <leader>vi :Vista<CR>
 
@@ -207,9 +211,9 @@ tnoremap <Esc> <C-W>N
 tnoremap <Esc><Esc> <C-W>N
 tnoremap <C-v> <C-W>"+<CR>
 autocmd TerminalOpen * if &buftype == 'terminal' |
-    \ setlocal bufhidden=hide | setlocal scl=no | setlocal nonu |
-    \ let t:send_to_term = +expand('<abuf>') |
-    \ endif
+            \ setlocal bufhidden=hide | setlocal scl=no | setlocal nonu |
+            \ let t:send_to_term = +expand('<abuf>') |
+            \ endif
 " @see https://github.com/vim/vim/issues/2716 terminal arrow key active
 set timeout timeoutlen=1000  " Default
 set ttimeout ttimeoutlen=100  " Set by defaults.vim
@@ -225,20 +229,23 @@ nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 " nerdtree
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+autocmd VimEnter * NERDTree 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && 
+            \ b:NERDTree.isTabTree()) | q | endif
 
 " sonictemplate
 let g:sonictemplate_vim_template_dir = [
-\ '$HOME/.vim/template',
-\ '$HOME/dotfiles/template'
-\]
+            \ '$HOME/.vim/template',
+            \ '$HOME/dotfiles/template'
+            \]
 
-call asyncomplete#register_source(asyncomplete#sources#nextword#get_source_options({
-\   'name': 'nextword',
-\   'whitelist': ['*'],
-\   'args': ['-n', '10000'],
-\   'completor': function('asyncomplete#sources#nextword#completor')
-\   }))
-
+" call asyncomplete#register_source(asyncomplete#sources#nextword#get_source_options({
+" \   'name': 'nextword',
+" \   'whitelist': ['*'],
+" \   'args': ['-n', '10000'],
+" \   'completor': function('asyncomplete#sources#nextword#completor')
+" \   }))
+" 
 " sqls
 if executable('sqls')
     augroup LspSqls
@@ -263,17 +270,17 @@ autocmd CmdwinEnter : g/^wq\?a\?!\?$/d
 
 " startify
 let g:startify_lists = [
-      \ { 'type': 'files',     'header': ['   MRU']            },
-      \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-      \ { 'type': 'sessions',  'header': ['   Sessions']       },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-      \ { 'type': 'commands',  'header': ['   Commands']       },
-      \ ]
+            \ { 'type': 'files',     'header': ['   MRU']            },
+            \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+            \ { 'type': 'sessions',  'header': ['   Sessions']       },
+            \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+            \ { 'type': 'commands',  'header': ['   Commands']       },
+            \ ]
 let g:startify_commands = [
-    \ ':help reference',
-    \ ['Vim Reference', 'h ref'],
-    \ {'h': 'h ref'},
-    \ ]
+            \ ':help reference',
+            \ ['Vim Reference', 'h ref'],
+            \ {'h': 'h ref'},
+            \ ]
 
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0
@@ -286,6 +293,11 @@ let g:ale_php_phpcs_standard = 'PSR2'
 
 " findroot
 let g:findroot_patterns = [
-    \ 'composer.json',
-    \ '.git',
-    \]
+            \ 'composer.json',
+            \ '.git',
+            \]
+
+let g:vdebug_options = {
+            \    'debug_file_level' : 2,
+            \    'debug_file' : '~/vdebug.log',
+            \}
