@@ -75,7 +75,7 @@ alias cdr=anyframe-widget-cdr
 alias cat=bat
 
 # asdf package manager
-#. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/asdf.sh
 NODEJS_CHECK_SIGNATURES=no #証明書の検証をしないにしてるけど、ちゃんとするようにしたい
 
 # fzf customize

@@ -37,7 +37,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'phpstan/vim-phpstan'
 Plug 'dense-analysis/ale'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'mattn/vim-sonictemplate'
 Plug 'lighttiger2505/sqls.vim'
 Plug 'schickling/vim-bufonly'
@@ -77,6 +77,10 @@ nos
 
 " list charts
 set listchars=tab:▸\ ,eol:¬
+
+filetype plugin indent on
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " window color
 autocmd ColorScheme * highlight NormalNC guifg=#a0a0a0 guibg=#121212
@@ -184,6 +188,8 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 noremap ff :Leaderf file --popup<CR>
 
+noremap <leader><leader>t :vertical terminal<CR>
+
 let g:Lf_ShowDevIcons = 1
 set ambiwidth=double
 
@@ -227,11 +233,11 @@ let g:quickrun_no_default_key_mappings = 1
 nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 
 " nerdtree
-nnoremap <silent> <C-e> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-autocmd VimEnter * NERDTree 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && 
-            \ b:NERDTree.isTabTree()) | q | endif
+" nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+" let NERDTreeShowHidden=1
+" autocmd VimEnter * NERDTree 
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && 
+"             \ b:NERDTree.isTabTree()) | q | endif
 
 " sonictemplate
 let g:sonictemplate_vim_template_dir = [
@@ -291,7 +297,7 @@ let g:ale_fixers = {'php': ['php_cs_fixer']}
 let g:ale_fix_on_save = 1
 let g:ale_php_phpcs_standard = 'PSR2'
 
-" findroot
+" findroom
 let g:findroot_patterns = [
             \ 'composer.json',
             \ '.git',
@@ -301,3 +307,13 @@ let g:vdebug_options = {
             \    'debug_file_level' : 2,
             \    'debug_file' : '~/vdebug.log',
             \}
+noremap <silent>5ter :ter ++rows=5<CR>
+
+" indent guide
+"hi IndentGuidesOdd  ctermbg=white
+"hi IndentGuidesEven ctermbg=lightgray
+
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesEven ctermbg=darkgrey
+
+nnoremap <leader>s :Gina status<CR>
