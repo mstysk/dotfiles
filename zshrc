@@ -26,6 +26,7 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node \
     zsh-users/zsh-autosuggestions \
     zdharma/fast-syntax-highlighting \
+    marlonrichert/zsh-autocomplete \
     sindresorhus/pure \
     zsh-users/zsh-history-substring-search \
     zsh-users/zsh-completions \
@@ -91,10 +92,15 @@ if [[ "${VIM_EDITERM_SETUP}" != "" ]]; then
 fi
 
 # starship
-#export STARSHIP_CONFIG="~/dotfiles/starship.toml"
-#eval "$(starship init zsh)"
+#
+function blastoff(){
+    echo "🚀"
+}
+starship_precmd_user_func="blastoff"
+export STARSHIP_CONFIG="${HOME}/dotfiles/starship.toml"
+eval "$(starship init zsh)"
 
 # nim
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

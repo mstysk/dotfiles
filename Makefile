@@ -1,4 +1,5 @@
 DOTFILEPATH = ${HOME}/dotfiles
+CONFIGPATH = ${HOME}/.config
 TASK_VERSION = 2.8.0
 CHEAT_VERSION = 3.7.1
 PACKAGE_DIR = ${HOME}/packages

@@ -22,7 +22,8 @@
     cm = commit
     stt = status -uno
     difff = diff --word-diff
-    currnet = symbolic-ref --short HEAD
+    current = symbolic-ref --short HEAD
+    up = push origin HEAD
 	please = push --force-with-lease
 	commend = commit --amend --no-edit
 	it = !git init && git commit -m “root” --allow-empty

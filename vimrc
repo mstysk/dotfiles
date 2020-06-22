@@ -48,6 +48,8 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/vim-findroot'
 Plug 'easymotion/vim-easymotion'
+Plug 'wakatime/vim-wakatime' "see https://wakatime.com/vim
+Plug 'cocopon/iceberg.vim'
 " Plug 'vim-vdebug/vdebug'
 call plug#end()
 
@@ -65,8 +67,8 @@ set whichwrap=b,s,h,l,<,>,[,]
 set cmdheight=2
 set updatetime=300
 set signcolumn=yes
-set spell
-set spelllang=en,cjk
+" set spell
+" set spelllang=en,cjk
 set wildmenu
 set wildmode=full
 set hlsearch
@@ -87,7 +89,7 @@ autocmd ColorScheme * highlight NormalNC guifg=#a0a0a0 guibg=#121212
 autocmd WinEnter,BufWinEnter * setlocal wincolor=
 autocmd WinLeave * setlocal wincolor=NormalNC
 
-" color schema
+"color schema
 colorscheme rigel
 set termguicolors
 
@@ -180,6 +182,7 @@ nmap <silent> E <Plug>(lsp-document-diagnostics)
 nnoremap <silent> K :LspHover<CR>
 
 " Leaderf
+let g:Lf_WorkingDirectoryMode = 'a'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
@@ -299,7 +302,6 @@ let g:ale_php_phpcs_standard = 'PSR2'
 
 " findroom
 let g:findroot_patterns = [
-            \ 'composer.json',
             \ '.git',
             \]
 
@@ -317,3 +319,4 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesEven ctermbg=darkgrey
 
 nnoremap <leader>s :Gina status<CR>
+nnoremap <leader>ch <Plug>(gina-index-checkout)
