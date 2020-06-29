@@ -44,6 +44,8 @@ compinit -u
 PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/openssl/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/zlib/lib/pkgconfig"
+PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/curl-openssl/lib/pkgconfig"
+PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/curl/lib/pkgconfig"
 NEXTWORD_DATA_PATH="${HOME}/.data/nextword-data"
 export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
 
@@ -54,9 +56,11 @@ path=(
     /usr/local/sbin(N-/)
     /usr/local/opt/bison/bin(N-/)
     /usr/local/opt/openssl/bin(N-/)
+    /usr/local/opt/curl-openssl/bin(N-/)
     /usr/local/opt/icu4c/bin(N-/)
     /usr/local/opt/icu4c/sbin(N-/)
     /usr/local/opt/llvm/bin(N-/)
+    /usr/local/opt/curl/bin(N-/)
     ${GOPATH}/bin(N-/)
     $(npm bin -g)
     $HOME/.composer/vendor/bin(N-/)
