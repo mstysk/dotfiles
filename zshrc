@@ -27,14 +27,14 @@ zinit light-mode for \
     zsh-users/zsh-autosuggestions \
     zdharma/fast-syntax-highlighting \
     marlonrichert/zsh-autocomplete \
-    sindresorhus/pure \
     zsh-users/zsh-history-substring-search \
     zsh-users/zsh-completions \
-    mollifier/anyframe
-
+    mollifier/anyframe \
+    b4b4r07/emoji-cli
 
 # set vim mode
-set -o vi
+#set -o vi
+bindkey -e
 
 # complition
 autoload -U compinit
@@ -74,8 +74,6 @@ alias l="ls -la"
 alias la="ls -la"
 alias l1="ls -1"
 alias gc=anyframe-widget-checkout-git-branch
-alias sl=anyframe-selector-auto
-alias hi=anyframe-widget-execute-history
 alias cdr=anyframe-widget-cdr
 alias cat=bat
 

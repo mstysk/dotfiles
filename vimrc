@@ -51,6 +51,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'wakatime/vim-wakatime' "see https://wakatime.com/vim
 Plug 'cocopon/iceberg.vim'
 " Plug 'vim-vdebug/vdebug'
+Plug 'junegunn/vim-emoji'
 call plug#end()
 
 set helplang=ja,en
@@ -299,10 +300,13 @@ let g:ale_disable_lsp = 1
 let g:ale_fixers = {'php': ['php_cs_fixer']}
 let g:ale_fix_on_save = 1
 let g:ale_php_phpcs_standard = 'PSR2'
+" 特定のディレクトリの時に設定したい
+let g:ale_php_phpstan_configuration = '/Users/yoshioka/dev/authense/etc/dev/phpstan/phpstan.neon'
 
 " findroom
 let g:findroot_patterns = [
             \ '.git',
+            \ 'composer.json',
             \]
 
 let g:vdebug_options = {
@@ -320,3 +324,9 @@ hi IndentGuidesEven ctermbg=darkgrey
 
 nnoremap <leader>s :Gina status<CR>
 nnoremap <leader>ch <Plug>(gina-index-checkout)
+
+" emoji
+let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+let g:gitgutter_sign_modified_removed = emoji#for('collision')
