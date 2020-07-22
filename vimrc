@@ -24,7 +24,7 @@ Plug 'olivertaylor/vacme' " https://github.com/olivertaylor/vacme
 Plug 'vim-jp/vimdoc-ja'
 Plug 'tyru/open-browser.vim'
 Plug 'liuchengxu/vista.vim' " https://github.com/liuchengxu/vista.vim
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'lambdalisue/gina.vim'
 Plug 'tsuyoshicho/vim-efm-langserver-settings'
 Plug 'skanehira/translate.vim'
@@ -52,6 +52,10 @@ Plug 'wakatime/vim-wakatime' "see https://wakatime.com/vim
 Plug 'cocopon/iceberg.vim'
 " Plug 'vim-vdebug/vdebug'
 Plug 'junegunn/vim-emoji'
+Plug 'thinca/vim-qfreplace'
+Plug 'junegunn/fzf', { 'do': { -> 'fzf#install()' }}
+Plug 'junegunn/fzf.vim'
+Plug 'pbogut/fzf-mru.vim'
 call plug#end()
 
 set helplang=ja,en
@@ -183,14 +187,14 @@ nmap <silent> E <Plug>(lsp-document-diagnostics)
 nnoremap <silent> K :LspHover<CR>
 
 " Leaderf
-let g:Lf_WorkingDirectoryMode = 'a'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-noremap ff :Leaderf file --popup<CR>
+"let g:Lf_WorkingDirectoryMode = 'a'
+"let g:Lf_PreviewInPopup = 1
+"let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+"noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+"noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+"noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+"noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+"noremap ff :Leaderf file --popup<CR>
 
 noremap <leader><leader>t :vertical terminal<CR>
 
@@ -330,3 +334,27 @@ let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
 let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
 let g:gitgutter_sign_modified_removed = emoji#for('collision')
+
+" ripgrep
+if executable('rg')
+    let &grepprg = 'rg --vimgrep'
+    set grepformat=%f:%l:%c:%m
+endif
+
+augroup AutoQuickfix
+    autocmd!
+    autocmd QuickFixCmdPost *grep* cwindow
+augroup END
+nnoremap <slient> <C-n> :<C-u>cnext<CR>
+nnoremap <slient> <C-p> :<C-u>cprev<CR>
+
+" fzf
+let g:fzf_mru_relative = 1
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-s': 'split',
+    \ 'ctrl-v': 'vsplit'
+    \ }
+
+noremap ff :GFiles <CR>
+noremap fb :Buffers <CR>
