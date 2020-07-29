@@ -56,6 +56,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'junegunn/fzf', { 'do': { -> 'fzf#install()' }}
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
+Plug 'skanehira/preview-markdown.vim'
 call plug#end()
 
 set helplang=ja,en
@@ -299,18 +300,27 @@ let g:startify_commands = [
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0
 
+function! s:FindFile(filename, patterns) abort
+    for l:pattern in a:patterns
+        let l:current = getcwd() . '/' . l:pattern . '**'
+        let l:file = findfile(a:filename, l:current)
+        if !empty(l:file)
+            return l:file
+        endif
+    endfor
+endfunction
+
 " ale
 let g:ale_disable_lsp = 1
 let g:ale_fixers = {'php': ['php_cs_fixer']}
 let g:ale_fix_on_save = 1
 let g:ale_php_phpcs_standard = 'PSR2'
-" 特定のディレクトリの時に設定したい
-let g:ale_php_phpstan_configuration = '/Users/yoshioka/dev/authense/etc/dev/phpstan/phpstan.neon'
+let g:ale_php_phpstan_configuration = s:FindFile("phpstan.neon", ["etc/", "./"])
+let g:ale_php_phpcs_standard = s:FindFile("ruleset.xml", ["etc/", "./"])
 
 " findroom
 let g:findroot_patterns = [
             \ '.git',
-            \ 'composer.json',
             \]
 
 let g:vdebug_options = {
@@ -358,3 +368,7 @@ let g:fzf_action = {
 
 noremap ff :GFiles <CR>
 noremap fb :Buffers <CR>
+
+let g:preview_markdown_vertical=1
+let g:preview_markdown_auto_update=1
+let g:preview_markdown_parser='mdcat'
