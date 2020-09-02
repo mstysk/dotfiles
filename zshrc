@@ -20,17 +20,17 @@ zinit ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
 zinit light trapd00r/LS_COLORS
 zinit ice pick"async.zsh" src"pure.zsh"
 
-zinit light-mode for \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-bin-gem-node \
-    zsh-users/zsh-autosuggestions \
-    zdharma/fast-syntax-highlighting \
-    marlonrichert/zsh-autocomplete \
-    zsh-users/zsh-history-substring-search \
-    zsh-users/zsh-completions \
-    mollifier/anyframe \
-    b4b4r07/emoji-cli
+#zinit light-mode for \
+#    zinit-zsh/z-a-patch-dl \
+#    zinit-zsh/z-a-as-monitor \
+#    zinit-zsh/z-a-bin-gem-node \
+#    zsh-users/zsh-autosuggestions \
+#    zdharma/fast-syntax-highlighting \
+#    marlonrichert/zsh-autocomplete \
+#    zsh-users/zsh-history-substring-search \
+#    zsh-users/zsh-completions \
+#    mollifier/anyframe \
+#    b4b4r07/emoji-cli
 
 # set vim mode
 #set -o vi
@@ -73,9 +73,12 @@ alias ls="gls --color=auto"
 alias l="ls -la"
 alias la="ls -la"
 alias l1="ls -1"
-alias gc=anyframe-widget-checkout-git-branch
 alias cdr=anyframe-widget-cdr
 alias cat=bat
+#alias gc="git checkout $(git branch | peco)"
+gc () {
+    git checkout $(git branch | peco)
+}
 
 # asdf package manager
 . /usr/local/opt/asdf/asdf.sh

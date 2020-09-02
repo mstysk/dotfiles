@@ -12,6 +12,7 @@ Plug 'thinca/vim-quickrun' "https://github.com/thinca/vim-quickrun
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-emoji.vim'
 " Plug 'high-moctane/asyncomplete-nextword.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
@@ -204,7 +205,7 @@ set ambiwidth=double
 
 " Vista
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
+let g:vista_default_executive = 'vim_lsp'
 let g:vista_executive_for = {
             \ 'cpp': 'vim_lsp',
             \ 'php': 'vim_lsp',
@@ -260,6 +261,13 @@ let g:sonictemplate_vim_template_dir = [
 " \   'args': ['-n', '10000'],
 " \   'completor': function('asyncomplete#sources#nextword#completor')
 " \   }))
+
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
+    \ 'name': 'emoji',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#emoji#completor'),
+    \ }))
+
 " 
 " sqls
 if executable('sqls')
@@ -368,7 +376,8 @@ let g:fzf_action = {
 
 noremap ff :GFiles <CR>
 noremap fb :Buffers <CR>
+noremap fa :Files <CR>
 
 let g:preview_markdown_vertical=1
 let g:preview_markdown_auto_update=1
-let g:preview_markdown_parser='mdcat'
+
