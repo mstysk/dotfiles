@@ -2,8 +2,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'thinca/vim-zenspace' "https://github.com/thinca/vim-zenspace
 Plug 'ryanoasis/vim-devicons' "https://github.com/ryanoasis/vim-devicons
 Plug 'lambdalisue/fern.vim' "https://github.com/lambdalisue/fern.vim
-Plug 'lambdalisue/fern-renderer-devicons.vim' "https://github.com/lambdalisue/fern-renderer-devicons.vim
+" Plug 'lambdalisue/fern-renderer-devicons.vim' "https://github.com/lambdalisue/fern-renderer-devicons.vim
 Plug 'lambdalisue/fern-comparator-lexical.vim' "https://github.com/lambdalisue/fern-comparator-lexical.vim
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'junegunn/vim-easy-align' "https://github.com/junegunn/vim-easy-align
 Plug 'machakann/vim-highlightedyank' "https://github.com/machakann/vim-highlightedyank
 Plug 'nathanaelkane/vim-indent-guides' "https://github.com/nathanaelkane/vim-indent-guides
@@ -57,6 +58,8 @@ Plug 'thinca/vim-qfreplace'
 Plug 'junegunn/fzf', { 'do': { -> 'fzf#install()' }}
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
+Plug 'voldikss/fzf-floaterm'
+Plug 'voldikss/vim-floaterm'
 Plug 'skanehira/preview-markdown.vim'
 call plug#end()
 
@@ -140,7 +143,7 @@ nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " Fern configure
-let g:fern#renderer = "devicons"
+" WARN : fern-renderer-devicons.vim has deprecated. Use fern-renderer-nerdfont.vim instead.
 let g:fern#comparator = "lexical"
 
 function! s:init_fern() abort
@@ -323,7 +326,7 @@ let g:ale_disable_lsp = 1
 let g:ale_fixers = {'php': ['php_cs_fixer']}
 let g:ale_fix_on_save = 1
 let g:ale_php_phpcs_standard = 'PSR2'
-let g:ale_php_phpstan_configuration = s:FindFile("phpstan.neon", ["etc/", "./"])
+let g:ale_php_phpstan_configuration = s:FindFile("phpstan.neon", ["service/protected/extensions/", "./"])
 let g:ale_php_phpcs_standard = s:FindFile("ruleset.xml", ["etc/", "./"])
 
 " findroom
@@ -380,4 +383,5 @@ noremap fa :Files <CR>
 
 let g:preview_markdown_vertical=1
 let g:preview_markdown_auto_update=1
+
 
