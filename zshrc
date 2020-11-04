@@ -46,6 +46,7 @@ PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/openssl/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/zlib/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/curl-openssl/lib/pkgconfig"
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/curl/lib/pkgconfig"
+PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/sqlite3/lib/pkgconfig"
 NEXTWORD_DATA_PATH="${HOME}/.data/nextword-data"
 export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
 
@@ -80,6 +81,18 @@ gc () {
     git checkout $(git branch | peco)
 }
 
+docker-cleanup() {
+    docker ps -a | awk 'NR>1{print $1}' | xargs -I @ docker rm -f @
+}
+
+docker-dangling(){
+    docker rmi $(docker images -f dangling=true -q)
+}
+
+adminer() {
+    docker run -p 8888:8080 --net authense_authense adminer
+}
+
 # asdf package manager
 . /usr/local/opt/asdf/asdf.sh
 NODEJS_CHECK_SIGNATURES=no #証明書の検証をしないにしてるけど、ちゃんとするようにしたい
@@ -109,3 +122,12 @@ eval "$(starship init zsh)"
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yoshioka/packages/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yoshioka/packages/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yoshioka/packages/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yoshioka/packages/google-cloud-sdk/completion.zsh.inc'; fi
