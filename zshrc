@@ -126,6 +126,7 @@ eval "$(starship init zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
+export CLOUDSDK_PYTHON=python2
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yoshioka/packages/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yoshioka/packages/google-cloud-sdk/path.zsh.inc'; fi
 
