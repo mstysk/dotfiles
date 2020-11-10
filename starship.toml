@@ -1,24 +1,21 @@
 # Don't print a new line at the start of the prompt
 add_newline = true
-prompt_order = [
-    "username",
-    "hostname",
-    "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-#    "git_status",
-#    "nodejs",
-    "php",
-    "aws",
-    "env_var",
-    "line_break",
-    "jobs",
-    "battery",
-    "time",
-    "character",
-]
-
+format = """\
+    $username\
+    $hostname\
+    $directory\
+    $git_branch\
+    $git_commit\
+    $git_state\
+    $php\
+    $aws\
+    $env_ver\
+    $line_break\
+    $jobs\
+    $battery\
+    $time\
+    $character\
+"""
 scan_timeout = 2
 
 [character]
