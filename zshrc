@@ -1,3 +1,5 @@
+export ASDF_DIR=$(brew --prefix asdf)
+. $ASDF_DIR/asdf.sh
 
 alias dircolors="gdircolors"
 # Added by Zinit's installer
@@ -37,6 +39,7 @@ zinit ice pick"async.zsh" src"pure.zsh"
 bindkey -e
 
 # complition
+fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit
 compinit -u
 
@@ -51,7 +54,6 @@ NEXTWORD_DATA_PATH="${HOME}/.data/nextword-data"
 export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
 
 GOPATH=${HOME}/go
-fpath=(/usr/local/share/zsh-completions $fpath)
 path=(
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
@@ -94,8 +96,7 @@ adminer() {
 }
 
 # asdf package manager
-. /usr/local/opt/asdf/asdf.sh
-NODEJS_CHECK_SIGNATURES=no #証明書の検証をしないにしてるけど、ちゃんとするようにしたい
+#. /usr/local/opt/asdf/asdf.sh
 
 # fzf customize
 if [[ -f ${HOME}/dotfiles/fzf.sh ]]; then

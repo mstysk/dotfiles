@@ -1,6 +1,6 @@
 DOTFILEPATH = ${HOME}/dotfiles
 CONFIGPATH = ${HOME}/.config
-TASK_VERSION = 2.8.0
+TASK_VERSION = 2.8.1
 CHEAT_VERSION = 3.7.1
 PACKAGE_DIR = ${HOME}/packages
 SITE_FUNCTION = /usr/local/share/zsh/site-functions
