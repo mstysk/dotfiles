@@ -149,20 +149,13 @@ nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
-" Fern configure
-" WARN : fern-renderer-devicons.vim has deprecated. Use fern-renderer-nerdfont.vim instead.
-let g:fern#comparator = "lexical"
-let g:fern_renderer_devicons_disable_warning = 1
-
-function! s:init_fern() abort
-    " Use 'select' instead of 'edit' for default 'open' action
-    nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
-endfunction
-
-augroup fern-custom
-    autocmd! *
-    autocmd FileType fern call s:init_fern()
+" Fern
+augroup __fern__
+    au!
+    autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=%
 augroup END
+
+nnoremap ,t :<c-u>Fern. -drawer -stay -keep -toggle -reveal=%<CR>
 
 " auto completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
