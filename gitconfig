@@ -18,7 +18,7 @@
 	trustExitCode = true
 [user]
     name = yoshioka
-    email = yoshioka@bengo4.com
+    email = yoshioka0627@gmail.com
 [merge]
     conflicttstyle = diff3
     tool = vimdiff
@@ -32,7 +32,7 @@
     difff = diff --word-diff
     current = symbolic-ref --short HEAD
     up = push origin HEAD
-	please = push --force-with-lease
+	please = push --force-with-lease origin HEAD
 	commend = commit --amend --no-edit
 	it = !git init && git commit -m “root” --allow-empty
 	stsh = stash --keep-index

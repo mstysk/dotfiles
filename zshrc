@@ -1,5 +1,11 @@
-export ASDF_DIR=$(brew --prefix asdf)
-. $ASDF_DIR/asdf.sh
+if [[ $ostype == 'darwin' ]]; then
+    export ASDF_DIR=$(brew --prefix asdf)
+    . $ASDF_DIR/asdf.sh
+fi
+# asdf package manager
+#. /usr/local/opt/asdf/asdf.sh
+cd $HOME |. $HOME/.asdf/asdf.sh
+
 
 alias dircolors="gdircolors"
 # Added by Zinit's installer
@@ -32,7 +38,6 @@ zinit ice pick"async.zsh" src"pure.zsh"
 #    zsh-users/zsh-history-substring-search \
 #    zsh-users/zsh-completions \
 #    mollifier/anyframe \
-#    b4b4r07/emoji-cli
 
 # set vim mode
 #set -o vi
@@ -55,6 +60,7 @@ export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
 
 GOPATH=${HOME}/go
 path=(
+    $path
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     /usr/local/opt/bison/bin(N-/)
@@ -68,11 +74,10 @@ path=(
     $(npm bin -g)
     $HOME/.composer/vendor/bin(N-/)
     $HOME/.bin(N-/)
-    $path
 )
 
 # alias
-alias ls="gls --color=auto"
+alias ls="ls --color=auto"
 alias l="ls -la"
 alias la="ls -la"
 alias l1="ls -1"
@@ -95,16 +100,14 @@ adminer() {
     docker run -p 8888:8080 --net authense_authense adminer
 }
 
-# asdf package manager
-#. /usr/local/opt/asdf/asdf.sh
-
 # fzf customize
 if [[ -f ${HOME}/dotfiles/fzf.sh ]]; then
     source ${HOME}/dotfiles/fzf.sh
 fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # grep
-export GREP_OPTIONS='--color=auto'
+#export GREP_OPTIONS='--color=auto'
 
 if [[ "${VIM_EDITERM_SETUP}" != "" ]]; then
   source "${VIM_EDITERM_SETUP}"
@@ -133,4 +136,9 @@ if [ -f '/Users/yoshioka/packages/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yoshioka/packages/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yoshioka/packages/google-cloud-sdk/completion.zsh.inc'; fi
+
+# direnv
 eval "$(direnv hook zsh)"
+
+# gitignore
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}

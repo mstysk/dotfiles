@@ -65,6 +65,9 @@ Plug 'skanehira/preview-markdown.vim'
 Plug 'herringtondarkholme/yats.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'direnv/direnv.vim'
+Plug 'Quramy/vison'
+Plug 'rhysd/vim-clang-format'
+Plug 'kana/vim-operator-user'
 call plug#end()
 
 set helplang=ja,en
@@ -149,6 +152,7 @@ nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " Fern configure
 " WARN : fern-renderer-devicons.vim has deprecated. Use fern-renderer-nerdfont.vim instead.
 let g:fern#comparator = "lexical"
+let g:fern_renderer_devicons_disable_warning = 1
 
 function! s:init_fern() abort
     " Use 'select' instead of 'edit' for default 'open' action
@@ -184,6 +188,12 @@ set completeopt+=preview
 
 " lsp settings
 let g:lsp_fold_enabled = 0
+
+let g:lsp_settings = {
+ \  'clang': {
+ \    'cmd': ['-lwiringPi'],
+ \  },
+\}
 
 " language server protocol short cuts
 nmap <silent> gd <Plug>(lsp-definition)
@@ -244,6 +254,7 @@ set ttimeout ttimeoutlen=100  " Set by defaults.vim
 " airline
 let g:rigel_airline = 1
 let g:airline_theme = 'rigel'
+let g:airline_powerline_font = 1
 
 " quick run
 let g:quickrun_no_default_key_mappings = 1
@@ -319,6 +330,7 @@ let g:startify_change_to_vcs_root = 0
 let g:ale_disable_lsp = 1
 let g:ale_fixers = {
 \    'php': ['php_cs_fixer'],
+\    'javascript': ['prettier'],
 \    'typescript': ['prettier'],
 \    'javascriptreact': ['prettier'],
 \    'typescriptreact': ['prettier'],
@@ -383,3 +395,7 @@ let g:preview_markdown_auto_update=1
 let g:preview_markdown_parser = 'glow'
 
 
+augroup fern
+  autocmd!
+  autocmd CursorMoved <buffer> echo matchstr(getline('.'), '[-./[:alnum:]_]\+')
+augroup END
