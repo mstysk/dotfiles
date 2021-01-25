@@ -1,0 +1,63 @@
+#compdef task
+
+function __task_desc() {
+  if [ -f Taskfile.yml ]; then
+    task -l | sed -n '/^\* '$(echo "$1" | sed 's|/|\\/|g')':.*\[option\]/,/^\*/p' | sed -e 's/^\* .*$//g' -e 's/^ *//g' -e '/^$/d' -e '/^$/d' -e 's/\]:(/\]: :_values "" /' -e 's/)$//'
+  fi
+}
+
+function _task() {
+  _arguments \
+    '(-d --dir)'{-d,--dir}': :_files' \
+    '(--dry)'--dry \
+    '(-f --force)'{-f,--force} \
+    '(-i --init)'{-i,--init} \
+    '(-l --list)'{-l,--list} \
+    '(-o --output)'{-o,--output}': :_values "output" interleaved group prefixed'\
+    '(-s --silent)'{-s,--silent} \
+    '(--status)'--status \
+    '(--summary)'--summary \
+    '(-v --verbose)'{-v,--verbose} \
+    '(--version)'--version \
+    '(-w --watch)'{-w,--watch} \
+    '(- *)'{-h,--help} \
+    '*:: :->task'
+
+  if [[ "$state" == "task" ]]; then
+    local -a tasks
+    if [ -f Taskfile.yml ]; then
+      tasks=($(task -l | sed '1d' | \grep -e '^\* ' | sed 's/^\* //' | awk '{ print $1 }' | sed 's/:$//' | sed 's/:/\\:/'))
+    fi
+
+    local -a __task_opts
+    for ((i=$CURRENT-1; i > 0; i--)); do
+      if [[ ! "$words[$i]" =~ ^.*= ]]; then
+        name="$words[$i]"
+        break
+      fi
+    done
+
+    if ((CURRENT == 1)); then
+      __task_opts=()
+    fi
+
+    if [ -n "$name" ]; then
+      __task_desc "$name" | while read t; do
+        __task_opts=("$t" $__task_opts)
+      done
+      if [ ${#__task_opts[@]} = 1 -a "${__task_opts[1][1]}" = "@" ]; then
+        name="${__task_opts[1][2,-1]}"
+        __task_opts=()
+        __task_desc "$name" | while read t; do
+          __task_opts=("$t" $__task_opts)
+        done
+      fi
+    fi
+
+    if [ ! ${#__task_opts[@]} = 0 ]; then
+      _values 'options' "$__task_opts[@]"
+    fi
+
+    _describe -t tasks 'task' tasks
+  fi
+}
