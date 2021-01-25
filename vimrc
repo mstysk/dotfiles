@@ -375,8 +375,10 @@ augroup AutoQuickfix
     autocmd!
     autocmd QuickFixCmdPost *grep* cwindow
 augroup END
-nnoremap <slient> <C-n> :<C-u>cnext<CR>
-nnoremap <slient> <C-p> :<C-u>cprev<CR>
+nnoremap <silent> <C-n> :<C-u>cnext<CR>
+nnoremap <silent> <C-p> :<C-u>cprev<CR>
+nnoremap <silent> <C-c> :<C-u>cclose<CR>
+nnoremap <silent> <C-o> :<C-u>copen<CR>
 
 " fzf
 let g:fzf_mru_relative = 1
