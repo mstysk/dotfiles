@@ -394,3 +394,6 @@ augroup fern
   autocmd!
   autocmd CursorMoved <buffer> echo matchstr(getline('.'), '[-./[:alnum:]_]\+')
 augroup END
+
+" quit all
+noremap ,q :qa!<CR>
