@@ -61,6 +61,10 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'voldikss/fzf-floaterm'
 Plug 'voldikss/vim-floaterm'
 Plug 'skanehira/preview-markdown.vim'
+" Plug 'leafgarland/typescript-vim'
+Plug 'herringtondarkholme/yats.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'direnv/direnv.vim'
 call plug#end()
 
 set helplang=ja,en
@@ -311,23 +315,16 @@ let g:startify_commands = [
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0
 
-function! s:FindFile(filename, patterns) abort
-    for l:pattern in a:patterns
-        let l:current = getcwd() . '/' . l:pattern . '**'
-        let l:file = findfile(a:filename, l:current)
-        if !empty(l:file)
-            return l:file
-        endif
-    endfor
-endfunction
-
 " ale
 let g:ale_disable_lsp = 1
-let g:ale_fixers = {'php': ['php_cs_fixer']}
+let g:ale_fixers = {
+\    'php': ['php_cs_fixer'],
+\    'typescript': ['prettier'],
+\    'javascriptreact': ['prettier'],
+\    'typescriptreact': ['prettier'],
+\    }
 let g:ale_fix_on_save = 1
 let g:ale_php_phpcs_standard = 'PSR2'
-let g:ale_php_phpstan_configuration = s:FindFile("phpstan.neon", ["service/protected/extensions/", "./"])
-let g:ale_php_phpcs_standard = s:FindFile("ruleset.xml", ["etc/", "./"])
 
 " findroom
 let g:findroot_patterns = [
@@ -383,5 +380,6 @@ noremap fa :Files <CR>
 
 let g:preview_markdown_vertical=1
 let g:preview_markdown_auto_update=1
+let g:preview_markdown_parser = 'glow'
 
 
