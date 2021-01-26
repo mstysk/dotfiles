@@ -334,6 +334,7 @@ let g:ale_php_phpcs_standard = 'PSR2'
 
 " findroom
 let g:findroot_patterns = [
+            \ 'package.json',
             \ '.git',
             \]
 
