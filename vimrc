@@ -56,11 +56,12 @@ Plug 'cocopon/iceberg.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'thinca/vim-qfreplace'
 Plug 'junegunn/fzf', { 'do': { -> 'fzf#install()' }}
-Plug 'junegunn/fzf.vim'
-Plug 'pbogut/fzf-mru.vim'
-Plug 'voldikss/fzf-floaterm'
-Plug 'voldikss/vim-floaterm'
-Plug 'skanehira/preview-markdown.vim'
+Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+"Plug 'junegunn/fzf.vim'
+"Plug 'pbogut/fzf-mru.vim'
+"Plug 'voldikss/fzf-floaterm'
+"Plug 'voldikss/vim-floaterm'
+"Plug 'skanehira/preview-markdown.vim'
 " Plug 'leafgarland/typescript-vim'
 Plug 'herringtondarkholme/yats.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -368,22 +369,36 @@ augroup AutoQuickfix
     autocmd!
     autocmd QuickFixCmdPost *grep* cwindow
 augroup END
+
+function! ToggleQuickFix()
+    if exists("g:qwindow")
+        lclose
+        unlet g:qwindow
+    else
+        try
+            lopen 10
+            let g:qwindow = 1
+        catch
+            echo "No Erroes found!"
+        endtry
+    endif
+endfunction
+
 nnoremap <silent> <C-n> :<C-u>cnext<CR>
 nnoremap <silent> <C-p> :<C-u>cprev<CR>
-nnoremap <silent> <C-c> :<C-u>cclose<CR>
-nnoremap <silent> <C-o> :<C-u>copen<CR>
+nnoremap <F2> :call ToggleQuickFix()<CR>
 
-" fzf
-let g:fzf_mru_relative = 1
-let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-s': 'split',
-    \ 'ctrl-v': 'vsplit'
-    \ }
-
-noremap ff :GFiles <CR>
-noremap fb :Buffers <CR>
-noremap fa :Files <CR>
+"" fzf
+"let g:fzf_mru_relative = 1
+"let g:fzf_action = {
+"    \ 'ctrl-t': 'tab split',
+"    \ 'ctrl-s': 'split',
+"    \ 'ctrl-v': 'vsplit'
+"    \ }
+"
+noremap fa :FzfPreviewProjectFilesRpc <CR>
+noremap ff :FzfPreviewGitFilesRpc <CR>
+noremap fb :FzfPreviewBuffersRpc <CR>
 
 let g:preview_markdown_vertical=1
 let g:preview_markdown_auto_update=1
