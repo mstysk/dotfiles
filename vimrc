@@ -69,6 +69,7 @@ Plug 'direnv/direnv.vim'
 Plug 'Quramy/vison'
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 set helplang=ja,en
