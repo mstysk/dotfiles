@@ -44,7 +44,7 @@ zinit ice pick"async.zsh" src"pure.zsh"
 bindkey -e
 
 # complition
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh-completions/src "$HOME/dotfiles/complition/" /usr/local/share/zsh-completions $fpath)
 autoload -U compinit
 compinit -u
 
