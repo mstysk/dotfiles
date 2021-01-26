@@ -1,10 +1,14 @@
-if [[ $ostype == 'darwin' ]]; then
+if [[ $OSTYPE == 'darwin*' ]]; then
     export ASDF_DIR=$(brew --prefix asdf)
     . $ASDF_DIR/asdf.sh
+    alias ls="gls --color=auto"
 fi
-# asdf package manager
-#. /usr/local/opt/asdf/asdf.sh
-cd $HOME |. $HOME/.asdf/asdf.sh
+
+if [[ $OSTYPE == 'linux'* ]]; then
+    # asdf package manager
+    #. /usr/local/opt/asdf/asdf.sh
+    cd $HOME |. $HOME/.asdf/asdf.sh
+fi
 
 
 alias dircolors="gdircolors"
