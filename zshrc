@@ -1,4 +1,4 @@
-if [[ $OSTYPE == 'darwin*' ]]; then
+if [[ $OSTYPE == 'darwin'* ]]; then
     export ASDF_DIR=$(brew --prefix asdf)
     . $ASDF_DIR/asdf.sh
     alias ls="gls --color=auto"
@@ -8,8 +8,8 @@ if [[ $OSTYPE == 'linux'* ]]; then
     # asdf package manager
     #. /usr/local/opt/asdf/asdf.sh
     cd $HOME |. $HOME/.asdf/asdf.sh
+    alias ls="ls --color=auto"
 fi
-
 
 alias dircolors="gdircolors"
 # Added by Zinit's installer
@@ -81,7 +81,6 @@ path=(
 )
 
 # alias
-alias ls="ls --color=auto"
 alias l="ls -la"
 alias la="ls -la"
 alias l1="ls -1"
