@@ -1,5 +1,5 @@
 [core]
-    excludesfile = /Users/yoshioka/.gitignore_global
+    excludesfile = /Users/yoshioka/dotfiles/gitignore_global
     editor = vim
     pager = delta
 
