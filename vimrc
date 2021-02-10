@@ -56,11 +56,11 @@ Plug 'cocopon/iceberg.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'thinca/vim-qfreplace'
 Plug 'junegunn/fzf', { 'do': { -> 'fzf#install()' }}
-Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
-"Plug 'junegunn/fzf.vim'
-"Plug 'pbogut/fzf-mru.vim'
-"Plug 'voldikss/fzf-floaterm'
-"Plug 'voldikss/vim-floaterm'
+" Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+Plug 'junegunn/fzf.vim'
+Plug 'pbogut/fzf-mru.vim'
+Plug 'voldikss/fzf-floaterm'
+Plug 'voldikss/vim-floaterm'
 "Plug 'skanehira/preview-markdown.vim'
 " Plug 'leafgarland/typescript-vim'
 Plug 'herringtondarkholme/yats.vim'
@@ -391,16 +391,19 @@ nnoremap <silent> <C-p> :<C-u>cprev<CR>
 nnoremap <F2> :call ToggleQuickFix()<CR>
 
 "" fzf
-"let g:fzf_mru_relative = 1
-"let g:fzf_action = {
-"    \ 'ctrl-t': 'tab split',
-"    \ 'ctrl-s': 'split',
-"    \ 'ctrl-v': 'vsplit'
-"    \ }
+let g:fzf_mru_relative = 1
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-s': 'split',
+    \ 'ctrl-v': 'vsplit'
+    \ }
 "
-noremap fa :FzfPreviewProjectFilesRpc <CR>
-noremap ff :FzfPreviewGitFilesRpc <CR>
-noremap fb :FzfPreviewBuffersRpc <CR>
+"noremap fa :FzfPreviewProjectFilesRpc <CR>
+"noremap ff :FzfPreviewGitFilesRpc <CR>
+"noremap fb :FzfPreviewBuffersRpc <CR>
+noremap ff :GFiles <CR>
+noremap fb :Buffers <CR>
+noremap fa :Files <CR>
 
 let g:preview_markdown_vertical=1
 let g:preview_markdown_auto_update=1
