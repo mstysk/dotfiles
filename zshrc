@@ -9,6 +9,8 @@ if [[ $OSTYPE == 'linux'* ]]; then
     #. /usr/local/opt/asdf/asdf.sh
     cd $HOME |. $HOME/.asdf/asdf.sh
     alias ls="ls --color=auto"
+    # XWindows
+    export DISPLAY=$(grep -oP "(?<=nameserver).+" /etc/resolv.conf):0.0
 fi
 
 alias dircolors="gdircolors"
