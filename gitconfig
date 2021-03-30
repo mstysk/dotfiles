@@ -1,5 +1,4 @@
 [core]
-    excludesfile = /Users/yoshioka/dotfiles/gitignore_global
     editor = vim
     pager = delta
 
@@ -10,15 +9,12 @@
 
 [interactive]
     diffFilter = delta --color-only
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [user]
     name = yoshioka
-    email = yoshioka0627@gmail.com
+	email = yoshioka@bengo4.com
 [merge]
     conflicttstyle = diff3
     tool = vimdiff
@@ -59,3 +55,11 @@
 	autostash = true
 [pull]
 	rebase = merges
+[credential]
+	helper = store
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[commit]
+	verbose = true
