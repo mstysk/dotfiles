@@ -70,6 +70,10 @@ Plug 'Quramy/vison'
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 Plug 'tpope/vim-surround'
+Plug 'https://gitlab.com/lstwn/broot.vim'
+Plug 'skanehira/preview-uml.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'aklt/plantuml-syntax'
 call plug#end()
 
 set helplang=ja,en
@@ -128,7 +132,7 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
 " clipboard
-set clipboard=unnamed
+set clipboard+=unnamed,unnamedplus,autoselect
 
 " cursor
 set cursorline
@@ -158,6 +162,16 @@ augroup __fern__
 augroup END
 
 nnoremap ,t :<c-u>Fern. -drawer -stay -keep -toggle -reveal=%<CR>
+
+" Broot
+" command! -nargs=? -complete=command Broot           call g:OpenBrootInPathInWindow(s:broot_default_explore_path, <f-args>)
+command! -nargs=? -complete=command Broot           call g:OpenBrootInPathInWindow(g:broot_default_explore_path, <f-args>)
+command! -nargs=? -complete=command BrootCurrentDir call g:OpenBrootInPathInWindow("%:p:h", <f-args>)
+command! -nargs=? -complete=command BrootWorkingDir call g:OpenBrootInPathInWindow(".", <f-args>)
+command! -nargs=? -complete=command BrootHomeDir    call g:OpenBrootInPathInWindow("~", <f-args>)
+
+nnoremap <silent> <leader>e :BrootWorkingDir<CR>
+nnoremap <silent> - :BrootCurrentDir<CR>
 
 " auto completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -210,7 +224,7 @@ nnoremap <silent> K :LspHover<CR>
 "noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 "noremap ff :Leaderf file --popup<CR>
 
-noremap <leader><leader>t :vertical terminal<CR>
+noremap <leader><leader>t :tab terminal<CR>
 
 let g:Lf_ShowDevIcons = 1
 set ambiwidth=double
@@ -264,8 +278,8 @@ nnoremap <Leader><Leader>r :<C-u>QuickRun<CR>
 
 " sonictemplate
 let g:sonictemplate_vim_template_dir = [
-            \ '$HOME/.vim/template',
-            \ '$HOME/dotfiles/template'
+            \ '$HOME/dotfiles/template',
+            \ '$HOME/.vim/template'
             \]
 
 " call asyncomplete#register_source(asyncomplete#sources#nextword#get_source_options({
@@ -417,3 +431,26 @@ augroup END
 
 " quit all
 noremap ,q :qa!<CR>
+
+let g:terminal_ansi_colors = [
+            \ '#073642',
+            \ '#dc322f',
+            \ '#859900',
+            \ '#b58900',
+            \ '#268bd2',
+            \ '#d33682',
+            \ '#2aa198',
+            \ '#eee8d5',
+            \ '#002b36',
+            \ '#cb4b16',
+            \ '#586e75',
+            \ '#657b83',
+            \ '#839496',
+            \ '#6c71c4',
+            \ '#93a1a1',
+            \ '#fdf6e3',
+            \ ]
+
+let g:preview_uml_url='http://localhost:8888'
+
+au FileType plantuml command! OpenUml : !wsl-open %
