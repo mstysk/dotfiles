@@ -1,16 +1,27 @@
+export EDITOR=vi
 if [[ $OSTYPE == 'darwin'* ]]; then
     export ASDF_DIR=$(brew --prefix asdf)
     . $ASDF_DIR/asdf.sh
-    alias ls="gls --color=auto"
+    if [ $(which lsd) ]; then
+        alias ls="lsd"
+    else
+        alias ls="gls --color=auto"
+    fi
 fi
 
 if [[ $OSTYPE == 'linux'* ]]; then
     # asdf package manager
     #. /usr/local/opt/asdf/asdf.sh
-    cd $HOME |. $HOME/.asdf/asdf.sh
-    alias ls="ls --color=auto"
+    . $HOME/.asdf/asdf.sh
+    if [ $(which lsd) ]; then
+        alias ls="lsd"
+    else
+        alias ls="ls --color=auto"
+    fi
     # XWindows
-    export DISPLAY=$(grep -oP "(?<=nameserver).+" /etc/resolv.conf):0.0
+    export DISPLAY=$(grep -oP "(?<=nameserver ).+" /etc/resolv.conf):0.0
+    # WSL xdg-open -> wsl_open
+    alias xdg-open=wsl-open
 fi
 
 alias dircolors="gdircolors"
@@ -34,11 +45,11 @@ zinit ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
 zinit light trapd00r/LS_COLORS
 zinit ice pick"async.zsh" src"pure.zsh"
 
-#zinit light-mode for \
-#    zinit-zsh/z-a-patch-dl \
-#    zinit-zsh/z-a-as-monitor \
-#    zinit-zsh/z-a-bin-gem-node \
-#    zsh-users/zsh-autosuggestions \
+zinit light-mode for \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-bin-gem-node \
+    zsh-users/zsh-autosuggestions \
 #    zdharma/fast-syntax-highlighting \
 #    marlonrichert/zsh-autocomplete \
 #    zsh-users/zsh-history-substring-search \
@@ -79,6 +90,7 @@ path=(
     ${GOPATH}/bin(N-/)
     $(npm bin -g)
     $HOME/.composer/vendor/bin(N-/)
+    $HOME/.cargo/bin
     $HOME/.bin(N-/)
 )
 
@@ -147,3 +159,7 @@ eval "$(direnv hook zsh)"
 
 # gitignore
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+source /home/yoshi/.config/broot/launcher/bash/br
+
+kitty + complete setup zsh | source /dev/stdin
