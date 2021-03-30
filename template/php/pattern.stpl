@@ -1,0 +1,68 @@
+\(\S\+\)\.function.public.\(\S\+\)$
+	public function {{$1}}({{_cursor_}}): {{$2}}
+	{
+	}
+
+\(\S\+\)\.function.private.\(\S\+\)$
+	private function {{$1}}({{_cursor_}}): {{$2}}
+	{
+	}
+}
+
+\(\S\+\)\.function.static.public.\(\S\+\)$
+	public function {{$1}}({{_cursor_}}): {{$2}}
+	{
+	}
+
+\(\S\+\)\.dump$
+	var_dump(${{$1}});
+	{{_cursor_}}
+
+\(\S\+\)\.string.private$
+	/** @var string */
+	private string ${{$1}};
+	{{_cursor_}}
+
+\(\S\+\)\.int.private$
+	/** @var int */
+	private int ${{$1}};
+	{{_cursor_}}
+
+\(\S\+\)\.array.private$
+	/** @var array */
+	private array ${{$1}} = [];
+	{{_cursor_}}
+
+\(\S\+\)\.bool.private$
+	/** @var bool*/
+	private bool ${{$1}};
+	{{_cursor_}}
+
+\(\S\+\)\.const.private$
+	/** @var string */
+	private const {{$1}} = "{{_cursor_}}{{$1}}";
+
+\(\S\+\)\.\(\S\+\)\.private$
+	/** @var {{$2}} */
+	private {{$2}} ${{$1}};
+	{{_cursor_}}
+
+\(\S\+\)\.\(\S\+\)\.private?$
+	/** @var ?{{$2}} */
+	private {{$2}} ${{$1}};
+	{{_cursor_}}
+
+autoload$
+	require_once __DIR__ . '/../vendor/autoload.php';
+	{{_cursor_}}
+
+invoke$
+	public function __invoke(Request $request, Response $response): Response
+	{
+	}
+	{{_cursor_}}
+
+psrhttp$
+	use Psr\Http\Message\ServerRequestInterface as Request;
+	use Psr\Http\Message\ResponseInterface as Response;
+	{{_cursor_}}
