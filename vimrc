@@ -38,7 +38,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'cohama/lexima.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'phpstan/vim-phpstan'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 " Plug 'scrooloose/nerdtree'
 Plug 'mattn/vim-sonictemplate'
 Plug 'lighttiger2505/sqls.vim'
@@ -161,6 +161,8 @@ augroup __fern__
     autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=%
 augroup END
 
+let g:fern#default_hidden = 1
+
 nnoremap ,t :<c-u>Fern. -drawer -stay -keep -toggle -reveal=%<CR>
 
 " Broot
@@ -203,12 +205,21 @@ let g:lsp_settings = {
  \    'cmd': ['-lwiringPi'],
  \  },
 \}
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" au User lsp_setup call lsp#register_server({
+"      \ 'name': 'psalm-language-server',
+"      \ 'cmd': {server_info->[expand('vendor/bin/psalm-language-server')]},
+"      \ 'allowlist': ['php'],
+"      \ })
 
 " language server protocol short cuts
 nmap <silent> gd <Plug>(lsp-definition)
 nmap <silent> gy <Plug>(lsp-type-definition))
 nmap <silent> gi <Plug>(lsp-implementation)
 nmap <silent> gr <Plug>(lsp-references)
+nmap <silent> gf <Plug>(lsp-document-format)
 nmap <silent> [c <Plug>(lsp-previous-error)
 nmap <silent> ]c <Plug>(lsp-next-error)
 nmap <silent> E <Plug>(lsp-document-diagnostics)
@@ -335,17 +346,17 @@ let g:startify_commands = [
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0
 
-" ale
-let g:ale_disable_lsp = 1
-let g:ale_fixers = {
-\    'php': ['php_cs_fixer'],
-\    'javascript': ['prettier'],
-\    'typescript': ['prettier'],
-\    'javascriptreact': ['prettier'],
-\    'typescriptreact': ['prettier'],
-\    }
-let g:ale_fix_on_save = 1
-let g:ale_php_phpcs_standard = 'PSR2'
+" " ale
+" let g:ale_disable_lsp = 1
+" let g:ale_fixers = {
+" \    'php': ['php_cs_fixer'],
+" \    'javascript': ['prettier'],
+" \    'typescript': ['prettier'],
+" \    'javascriptreact': ['prettier'],
+" \    'typescriptreact': ['prettier'],
+" \    }
+" let g:ale_fix_on_save = 1
+" let g:ale_php_phpcs_standard = 'PSR2'
 
 " findroom
 let g:findroot_patterns = [
@@ -368,6 +379,22 @@ hi IndentGuidesEven ctermbg=darkgrey
 
 nnoremap <leader>s :Gina status<CR>
 nnoremap <leader>ch <Plug>(gina-index-checkout)
+
+call extend(g:gina#command#browse#translation_patterns, {
+    \ 'gitlab-docker\.bengo4\.com': [
+    \   [
+    \     '\vhttps?://(%domain)/(.{-})/(.{-})%(\.git)?$',
+    \     '\vgit://(%domain)/(.{-})/(.{-})%(\.git)?$',
+    \     '\vgit\@(%domain):(.{-})/(.{-})%(\.git)?$',
+    \     '\vssh://git\@(%domain)/(.{-})/(.{-})%(\.git)?$',
+    \   ], {
+    \     'root':  'https://\1/\2/\3/tree/%r1/',
+    \     '_':     'https://\1/\2/\3/blob/%r1/%pt%{#L|}ls%{-}le',
+    \     'exact': 'https://\1/\2/\3/blob/%h1/%pt%{#L|}ls%{-}le',
+    \   },
+    \ ],
+    \})
+
 
 " emoji
 let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
@@ -454,3 +481,6 @@ let g:terminal_ansi_colors = [
 let g:preview_uml_url='http://localhost:8888'
 
 au FileType plantuml command! OpenUml : !wsl-open %
+
+set syntax=markdown
+au BufRead,BufNewFile *.md set filetype=markdown

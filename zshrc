@@ -2,11 +2,7 @@ export EDITOR=vi
 if [[ $OSTYPE == 'darwin'* ]]; then
     export ASDF_DIR=$(brew --prefix asdf)
     . $ASDF_DIR/asdf.sh
-    if [ $(which lsd) ]; then
-        alias ls="lsd"
-    else
-        alias ls="gls --color=auto"
-    fi
+    alias ls="gls --color=auto"
 fi
 
 if [[ $OSTYPE == 'linux'* ]]; then
@@ -162,4 +158,5 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 
 source /home/yoshi/.config/broot/launcher/bash/br
 
-kitty + complete setup zsh | source /dev/stdin
+# kitty + complete setup zsh | source /dev/stdin
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
