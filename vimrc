@@ -20,6 +20,8 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'LumaKernel/fern-mapping-reload-all.vim'
 " git
 Plug 'lambdalisue/gina.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 " air line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -148,6 +150,7 @@ augroup __fern__
 augroup END
 
 nnoremap ,t :<c-u>Fern. -drawer -stay -keep -toggle -reveal=%<CR>
+nnoremap ,r :<c-u>Fern. -drawer -stay -keep -reveal=%<CR>
 
 " bengo4 com develop
 call extend(g:gina#command#browse#translation_patterns, {
