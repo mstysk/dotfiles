@@ -31,6 +31,8 @@ Plug 'mattn/vim-sonictemplate'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'skanehira/translate.vim'
+Plug 'wakatime/vim-wakatime'
+Plug 'direnv/direnv.vim'
 " color scheme
 Plug 'cocopon/iceberg.vim'
 Plug 'Rigellute/rigel'
