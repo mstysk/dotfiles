@@ -125,6 +125,11 @@ nmap <silent> ]c <Plug>(lsp-next-error)
 nmap <silent> E <Plug>(lsp-document-diagnostics)
 nnoremap <silent> K :LspHover<CR>
 
+" debug
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:efm_langserver_setting#debug = 1
+
 " git 
 nnoremap <leader>s :Gina status<CR>
 nnoremap <leader>ch <Plug>(gina-index-checkout)
