@@ -36,7 +36,7 @@
 	staaash = stash --all
 	shorty = status --short --branch
     grog = "log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'"
-    cleanup = "!f() { git branch --merged | egrep -v 'master' | xargs git branch -D; };f"
+    cleanup = "!f() { git branch --merged | egrep -v 'master|main' | xargs git branch -D; };f"
     cast = "!f() { git branch -D $(git branch --no-merged | peco); };f"
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
