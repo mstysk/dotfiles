@@ -33,6 +33,7 @@ Plug 'lambdalisue/nerdfont.vim'
 Plug 'skanehira/translate.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'direnv/direnv.vim'
+Plug 'editorconfig/editorconfig-vim'
 " color scheme
 Plug 'cocopon/iceberg.vim'
 Plug 'Rigellute/rigel'
