@@ -46,6 +46,8 @@ zinit light-mode for \
     zinit-zsh/z-a-as-monitor \
     zinit-zsh/z-a-bin-gem-node \
     zsh-users/zsh-autosuggestions \
+    reegnz/jq-zsh-plugin \
+    supercrabtree/k
 #    zdharma/fast-syntax-highlighting \
 #    marlonrichert/zsh-autocomplete \
 #    zsh-users/zsh-history-substring-search \
