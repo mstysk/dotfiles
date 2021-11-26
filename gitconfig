@@ -53,6 +53,7 @@
 [rebase]
 	autosquash = true
 	autostash = true
+    rebase-merges= true
 [pull]
 	rebase = merges
 [credential]
@@ -65,3 +66,4 @@
 	verbose = true
 [init]
 	defaultBranch = main
+	templateDir = /Users/yoshioka/.git-templates/git-secrets
