@@ -5,11 +5,11 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
+Plug 'tsuyoshicho/vim-efm-langserver-settings'
 " auto complete
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-emoji.vim'
-Plug 'tsuyoshicho/vim-efm-langserver-settings'
 " fazzy finder
 Plug 'junegunn/fzf', { 'do': { -> 'fzf#install()' }}
 Plug 'junegunn/fzf.vim'
@@ -42,6 +42,12 @@ call plug#end()
 set helplang=ja,en
 syntax on
 
+" 十字キー off
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 " display
 set nu
 set cmdheight=2
@@ -55,15 +61,11 @@ set listchars=tab:▸\ ,eol:¬
 set showtabline=2
 
 " buf
-" set hidden
 set autowrite
 set autoread
 
 " swap
-"set directory=~/backup
-
-" quit all
-noremap ,q :qa!<CR>
+set directory=~/backup
 
 " color scheme
 colorscheme rigel
@@ -80,28 +82,17 @@ nnoremap gk k
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
-" vim 
-nnoremap <silent> <leader>load :source $MYVIMRC<CR>
-
 " command line
 set wildmenu
 set wildmode=list,full
 
-" highlint
+" highlight
 set hlsearch
 set incsearch
 
-" colrscheme
-set termguicolors
-
-" snippet 
-set completeopt=menuone,popup,noinsert,noselect
-inoremap <expr><Tab>   pumvisible() ? "<C-n>" : "<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "<C-p>" : "<S-Tab>"
-
 " clipboard
 set clipboard=unnamed
-"
+
 " tab setting
 set tabstop=4
 set shiftwidth=4
@@ -115,50 +106,9 @@ nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
-" language server protocol short cuts
-nmap <silent> gd <Plug>(lsp-definition)
-nmap <silent> gy <Plug>(lsp-type-definition))
-nmap <silent> gi <Plug>(lsp-implementation)
-nmap <silent> gr <Plug>(lsp-references)
-nmap <silent> gf <Plug>(lsp-document-format)
-nmap <silent> [c <Plug>(lsp-previous-error)
-nmap <silent> ]c <Plug>(lsp-next-error)
-nmap <silent> E <Plug>(lsp-document-diagnostics)
-nnoremap <silent> K :LspHover<CR>
-
-" debug
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
-let g:efm_langserver_setting#debug = 1
-
 " git 
 nnoremap <leader>s :Gina status<CR>
 nnoremap <leader>ch <Plug>(gina-index-checkout)
-
-" fzf
-noremap ff :GFiles <CR>
-noremap fb :Buffers <CR>
-noremap fa :Files <CR>
-noremap <leader>p :FZFMru <CR>
-
-" sonictemplate
-let g:sonictemplate_vim_template_dir = [
-            \ '$HOME/dotfiles/template',
-            \ '$HOME/.vim/template'
-            \]
-
-" fern
-let g:fern#renderer = "nerdfont"
-let g:fern#default_hidden = 1
-let g:fern#default_exclude = '^\.\(.*\)\.\(.*\)\.swp\|.vim-lsp-settings\|.git\|.php_cs.cache'
-
-augroup __fern__
-    au!
-    autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=%
-augroup END
-
-nnoremap ,t :<c-u>Fern. -drawer -stay -keep -toggle -reveal=%<CR>
-nnoremap ,r :<c-u>Fern. -drawer -stay -keep -reveal=%<CR>
 
 " bengo4 com develop
 call extend(g:gina#command#browse#translation_patterns, {
@@ -176,3 +126,49 @@ call extend(g:gina#command#browse#translation_patterns, {
     \ ],
     \})
 
+" fzf
+noremap ff :GFiles <CR>
+noremap fb :Buffers <CR>
+noremap fa :Files <CR>
+noremap <leader>p :FZFMru <CR>
+
+" fern
+let g:fern#renderer = "nerdfont"
+let g:fern#default_hidden = 1
+
+
+
+" vim-lsp
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
