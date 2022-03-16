@@ -1,7 +1,6 @@
 export EDITOR=vi
 if [[ $OSTYPE == 'darwin'* ]]; then
-    export ASDF_DIR=$(brew --prefix asdf)
-    . $ASDF_DIR/asdf.sh
+    . $HOME/.asdf/asdf.sh
     alias ls="gls --color=auto"
 fi
 
@@ -75,7 +74,9 @@ export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
 
 GOPATH=${HOME}/go
 path=(
-    $path
+    /usr/local/opt/php@7.4/bin(N-/)
+    /usr/local/opt/openssl@1.1/bin(N-/)
+    /usr/local/opt/openjdk/bin(N-/)
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     /usr/local/opt/bison/bin(N-/)
@@ -90,6 +91,7 @@ path=(
     $HOME/.composer/vendor/bin(N-/)
     $HOME/.cargo/bin
     $HOME/.bin(N-/)
+    $path
 )
 
 # alias
@@ -100,7 +102,7 @@ alias cdr=anyframe-widget-cdr
 alias cat=bat
 #alias gc="git checkout $(git branch | peco)"
 gc () {
-    git checkout $(git branch | peco)
+    git checkout $(git branch -a | peco)
 }
 
 docker-cleanup() {
@@ -113,6 +115,7 @@ docker-dangling(){
 
 adminer() {
     docker run -p 8888:8080 --net authense_authense adminer
+    ##docker run -p 8888:8080 --net  gyomu-beta_default adminer
 }
 
 # fzf customize
@@ -158,7 +161,8 @@ eval "$(direnv hook zsh)"
 # gitignore
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
-source /home/yoshi/.config/broot/launcher/bash/br
-
 # kitty + complete setup zsh | source /dev/stdin
 export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+
+# set JAVA_HOME
+export JAVA_HOME=/usr/local/opt/openjdk
