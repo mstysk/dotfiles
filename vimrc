@@ -37,6 +37,8 @@ Plug 'editorconfig/editorconfig-vim'
 " color scheme
 Plug 'cocopon/iceberg.vim'
 Plug 'Rigellute/rigel'
+" debug
+Plug 'vim-vdebug/vdebug'
 call plug#end()
 
 set helplang=ja,en
@@ -68,7 +70,7 @@ set autoread
 set directory=~/backup
 
 " color scheme
-colorscheme rigel
+colorscheme iceberg 
 
 " key mapping change
 let mapleader="\<Space>"
@@ -136,13 +138,11 @@ noremap <leader>p :FZFMru <CR>
 let g:fern#renderer = "nerdfont"
 let g:fern#default_hidden = 1
 
-
-
 " vim-lsp
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 function! s:on_lsp_buffer_enabled() abort
@@ -159,8 +159,9 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+    nmap <buffer> E <Plug>(lsp-document-diagnostics)
+"    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+"    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
@@ -172,3 +173,48 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" lsp debug
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" Fern
+nnoremap ,t :<c-u>Fern. -drawer -stay -keep -toggle -reveal=%<CR>
+nnoremap ,r :<c-u>Fern. -drawer -stay -keep -reveal=%<CR>
+
+if executable('efm-langserver')
+  augroup LspEFM
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'efm-langserver',
+        \ 'cmd': {server_info->['efm-langserver', '-c='.$HOME.'/.config/efm-langserver/config.yaml']},
+        \ 'whitelist': ['php'],
+        \ })
+  augroup END
+endif
+
+let g:lsp_format_sync_timeout = -1
+
+" php xdebug
+let g:vdebug_options = {
+\    'port' : 9003,
+\    'timeout' : 20,
+\    'server' : '127.0.0.1',
+\    'on_close' : 'stop',
+\    'break_on_open' : 1,
+\    'ide_key' : 'PHPSTORM',
+\    'debug_window_level' : 0,
+\    'debug_file_level' : 1,
+\    'debug_file' : $HOME.'/vdebug.log',
+\    'path_maps' : {},
+\    'watch_window_style' : 'expanded',
+\    'marker_default' : '⬦',
+\    'marker_closed_tree' : '▸',
+\    'marker_open_tree' : '▾',
+\    'sign_breakpoint' : '▷',
+\    'sign_current' : '▶',
+\    'continuous_mode'  : 1,
+\    'simplified_status': 1,
+\    'layout': 'vertical',
+\}
+
