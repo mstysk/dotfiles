@@ -74,7 +74,6 @@ export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
 
 GOPATH=${HOME}/go
 path=(
-    /usr/local/opt/php@7.4/bin(N-/)
     /usr/local/opt/openssl@1.1/bin(N-/)
     /usr/local/opt/openjdk/bin(N-/)
     /usr/local/bin(N-/)
@@ -86,11 +85,12 @@ path=(
     /usr/local/opt/icu4c/sbin(N-/)
     /usr/local/opt/llvm/bin(N-/)
     /usr/local/opt/curl/bin(N-/)
+    /Users/yoshioka/.asdf/shims(N-/)
     ${GOPATH}/bin(N-/)
     $(npm bin -g)
-    $HOME/.composer/vendor/bin(N-/)
     $HOME/.cargo/bin
     $HOME/.bin(N-/)
+    $(composer global config bin-dir --absolute)
     $path
 )
 
@@ -160,9 +160,6 @@ eval "$(direnv hook zsh)"
 
 # gitignore
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
-
-# kitty + complete setup zsh | source /dev/stdin
-export PATH="/usr/local/opt/php@7.3/bin:$PATH"
 
 # set JAVA_HOME
 export JAVA_HOME=/usr/local/opt/openjdk
