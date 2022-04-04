@@ -74,6 +74,12 @@ export PKG_CONFIG_PATH NEXTWORD_DATA_PATH
 
 GOPATH=${HOME}/go
 path=(
+    ${HOME}/.asdf/shims(N-/)
+    ${GOPATH}/bin(N-/)
+    $(npm bin -g)(N-/)
+    $HOME/.cargo/bin(N-/)
+    $HOME/.bin(N-/)
+    $(composer global config bin-dir --absolute)
     /usr/local/opt/openssl@1.1/bin(N-/)
     /usr/local/opt/openjdk/bin(N-/)
     /usr/local/bin(N-/)
@@ -85,12 +91,6 @@ path=(
     /usr/local/opt/icu4c/sbin(N-/)
     /usr/local/opt/llvm/bin(N-/)
     /usr/local/opt/curl/bin(N-/)
-    /Users/yoshioka/.asdf/shims(N-/)
-    ${GOPATH}/bin(N-/)
-    $(npm bin -g)
-    $HOME/.cargo/bin
-    $HOME/.bin(N-/)
-    $(composer global config bin-dir --absolute)
     $path
 )
 
