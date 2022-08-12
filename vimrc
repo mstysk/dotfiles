@@ -39,6 +39,13 @@ Plug 'cocopon/iceberg.vim'
 Plug 'Rigellute/rigel'
 " debug
 Plug 'vim-vdebug/vdebug'
+Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+" markdown
+Plug 'tpope/vim-markdown'
+" Twig
+" Plug 'lumiliet/vim-twig'
+Plug 'nelsyeung/twig.vim'
+
 call plug#end()
 
 set helplang=ja,en
@@ -218,3 +225,14 @@ let g:vdebug_options = {
 \    'layout': 'vertical',
 \}
 
+let g:sonictemplate_vim_template_dir = [
+      \ '~/dotfiles/template'
+      \]
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php']
+
+" colorcolumn
+set cc=80,120,240
+
+" twig filetype
+"autocmd BufNewFile,BufRead *.twig set filetype=twig

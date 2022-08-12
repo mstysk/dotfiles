@@ -1,6 +1,7 @@
 [core]
     editor = vim
     pager = delta
+	ignoreCase = false
 
 [delta]
     plus-color = "#012800"
@@ -53,7 +54,6 @@
 [rebase]
 	autosquash = true
 	autostash = true
-    rebase-merges= true
 [pull]
 	rebase = merges
 [credential]
@@ -74,3 +74,5 @@
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[difttol]
+	prompt = false

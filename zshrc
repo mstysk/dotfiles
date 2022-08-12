@@ -38,15 +38,17 @@ zinit ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zinit light trapd00r/LS_COLORS
-zinit ice pick"async.zsh" src"pure.zsh"
+#zinit ice pick"async.zsh" src"pure.zsh"
+zinit light zsh-users/zsh-autosuggestions 
+zinit light marlonrichert/zsh-autocomplete
 
-zinit light-mode for \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-bin-gem-node \
-    zsh-users/zsh-autosuggestions \
-    reegnz/jq-zsh-plugin \
-    supercrabtree/k
+#zinit light-mode for \
+#    zinit-zsh/z-a-patch-dl \
+#    zinit-zsh/z-a-as-monitor \
+#    zinit-zsh/z-a-bin-gem-node \
+#    zsh-users/zsh-autosuggestions 
+#    reegnz/jq-zsh-plugin \
+#    supercrabtree/k
 #    zdharma/fast-syntax-highlighting \
 #    marlonrichert/zsh-autocomplete \
 #    zsh-users/zsh-history-substring-search \
