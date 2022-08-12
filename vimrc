@@ -77,7 +77,7 @@ set autoread
 set directory=~/backup
 
 " color scheme
-colorscheme iceberg 
+colorscheme rigel
 
 " key mapping change
 let mapleader="\<Space>"
