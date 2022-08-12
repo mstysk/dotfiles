@@ -1,7 +1,27 @@
 export EDITOR=vi
+
+function zinitDarwin() {
+  # Added by Zinit's installer
+  if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+  fi
+  
+  source "$HOME/.zinit/bin/zinit.zsh"
+}
+
+function zinitLinux() {
+    ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+    source "${ZINIT_HOME}/zinit.zsh"
+}
+
 if [[ $OSTYPE == 'darwin'* ]]; then
     . $HOME/.asdf/asdf.sh
     alias ls="gls --color=auto"
+    zinitDawrin
 fi
 
 if [[ $OSTYPE == 'linux'* ]]; then
@@ -17,19 +37,11 @@ if [[ $OSTYPE == 'linux'* ]]; then
     export DISPLAY=$(grep -oP "(?<=nameserver ).+" /etc/resolv.conf):0.0
     # WSL xdg-open -> wsl_open
     alias xdg-open=wsl-open
+    zinitLinux
 fi
 
 alias dircolors="gdircolors"
-# Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -165,3 +177,6 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 
 # set JAVA_HOME
 export JAVA_HOME=/usr/local/opt/openjdk
+
+# set RUST
+source "$HOME/.cargo/env"
