@@ -13,9 +13,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[user]
-    name = yoshioka
-	email = yoshioka@bengo4.com
 [merge]
     conflicttstyle = diff3
     tool = vimdiff
@@ -76,3 +73,12 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [difttol]
 	prompt = false
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = yoshioka0627@gmail.com
+	name = Masato Yoshioka
