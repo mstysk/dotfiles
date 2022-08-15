@@ -21,7 +21,7 @@ function zinitLinux() {
 if [[ $OSTYPE == 'darwin'* ]]; then
     . $HOME/.asdf/asdf.sh
     alias ls="gls --color=auto"
-    zinitDawrin
+    zinitDarwin 
 fi
 
 if [[ $OSTYPE == 'linux'* ]]; then
@@ -179,4 +179,6 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 export JAVA_HOME=/usr/local/opt/openjdk
 
 # set RUST
-source "$HOME/.cargo/env"
+if [ -f $HOME/.cargo/env ]; then
+    source "$HOME/.cargo/env"
+fi
