@@ -28,15 +28,10 @@ if [[ $OSTYPE == 'linux'* ]]; then
     # asdf package manager
     #. /usr/local/opt/asdf/asdf.sh
     . $HOME/.asdf/asdf.sh
-    if [ $(which lsd) ]; then
-        alias ls="lsd"
-    else
-        alias ls="ls --color=auto"
-    fi
     # XWindows
     export DISPLAY=$(grep -oP "(?<=nameserver ).+" /etc/resolv.conf):0.0
     # WSL xdg-open -> wsl_open
-    alias xdg-open=wsl-open
+    alias open=wsl-open
     zinitLinux
 fi
 
@@ -114,6 +109,7 @@ alias la="ls -la"
 alias l1="ls -1"
 alias cdr=anyframe-widget-cdr
 alias cat=bat
+alias ls="exa"
 #alias gc="git checkout $(git branch | peco)"
 gc () {
     git checkout $(git branch -a | peco)
