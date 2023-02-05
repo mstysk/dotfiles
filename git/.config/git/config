@@ -63,7 +63,7 @@
 	verbose = true
 [init]
 	defaultBranch = main
-	templateDir = /Users/yoshioka/.git-templates/git-secrets
+	templateDir = ~/.git-templates/git-secrets
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
