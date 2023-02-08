@@ -73,7 +73,18 @@ end
 
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
-_G.packer_plugins = {}
+_G.packer_plugins = {
+  rigel = {
+    loaded = true,
+    path = "/home/yoshioka/.local/share/nvim/site/pack/packer/start/rigel",
+    url = "https://github.com/Rigellute/rigel"
+  },
+  ["vimdoc-ja"] = {
+    loaded = true,
+    path = "/home/yoshioka/.local/share/nvim/site/pack/packer/start/vimdoc-ja",
+    url = "https://github.com/vim-jp/vimdoc-ja"
+  }
+}
 
 time([[Defining packer_plugins]], false)
 
