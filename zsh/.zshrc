@@ -1,6 +1,3 @@
-# Starship
-eval "$(starship init zsh)"
-
 # alias
 alias ls='exa'
 alias cat='bat'
@@ -28,3 +25,18 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 
 ## Snippet
 zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
+
+path=(
+    $path
+)
+
+# asdf
+. ${HOME}/.asdf/asdf.sh
+
+# Starship
+eval "$(starship init zsh)"
+
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/yoshioka/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
