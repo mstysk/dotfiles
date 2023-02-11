@@ -4,6 +4,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  use 'vim-jp/vimdoc-ja'
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
