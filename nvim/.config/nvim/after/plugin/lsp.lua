@@ -4,12 +4,12 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'tsserver',
-  'sumneko_lua',
+  'lua_ls',
   'rust_analyzer',
   'phpactor'
 })
 
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
@@ -53,7 +53,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-h", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp.setup()

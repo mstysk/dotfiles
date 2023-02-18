@@ -51,4 +51,12 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+  use 'wakatime/vim-wakatime'
+  use 'machakann/vim-highlightedyank'
+  use 'mattn/vim-sonictemplate'
+  use 'lambdalisue/fern.vim'
+  use 'lambdalisue/fern-renderer-nerdfont.vim'
+  use 'lambdalisue/nerdfont.vim'
+  use 'lambdalisue/fern-git-status.vim'
+  use 'lambdalisue/glyph-palette.vim'
 end)

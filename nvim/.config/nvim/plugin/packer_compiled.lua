@@ -104,10 +104,30 @@ _G.packer_plugins = {
     path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["fern-git-status.vim"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/fern-git-status.vim",
+    url = "https://github.com/lambdalisue/fern-git-status.vim"
+  },
+  ["fern-renderer-nerdfont.vim"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/fern-renderer-nerdfont.vim",
+    url = "https://github.com/lambdalisue/fern-renderer-nerdfont.vim"
+  },
+  ["fern.vim"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/fern.vim",
+    url = "https://github.com/lambdalisue/fern.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["glyph-palette.vim"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/glyph-palette.vim",
+    url = "https://github.com/lambdalisue/glyph-palette.vim"
   },
   harpoon = {
     loaded = true,
@@ -128,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nerdfont.vim"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/nerdfont.vim",
+    url = "https://github.com/lambdalisue/nerdfont.vim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -179,6 +204,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-highlightedyank"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/vim-highlightedyank",
+    url = "https://github.com/machakann/vim-highlightedyank"
+  },
+  ["vim-sonictemplate"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/vim-sonictemplate",
+    url = "https://github.com/mattn/vim-sonictemplate"
+  },
+  ["vim-wakatime"] = {
+    loaded = true,
+    path = "/Users/yoshioka/.local/share/nvim/site/pack/packer/start/vim-wakatime",
+    url = "https://github.com/wakatime/vim-wakatime"
   },
   ["vimdoc-ja"] = {
     loaded = true,

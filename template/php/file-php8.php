@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace {{_cursor_}};
+namespace {{_input_:var}};
 
-class {{_name_}}
+final class {{_name_}}
 {
 }

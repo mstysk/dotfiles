@@ -10,7 +10,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent =true
 vim.opt.smarttab = true
 
-vim.opt.wrap = false;
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -35,3 +35,4 @@ vim.opt.wildmode:append({ list = true, full= true})
 vim.opt.list = true
 vim.opt.listchars:append({eol = '↵' })
 
+vim.opt.autoindent = true
