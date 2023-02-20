@@ -79,3 +79,5 @@
 [user]
 	email = yoshioka0627@gmail.com
 	name = Masato Yoshioka
+[protocol "file"]
+	allow = always
