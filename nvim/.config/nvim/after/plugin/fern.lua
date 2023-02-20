@@ -11,3 +11,10 @@ augroup my-glyph-palette
     autocmd FileType startify call glyph_palette#apply()
 augroup END
 ]]
+
+vim.cmd([[
+    augroup __fern__
+    au!
+    autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=%
+    augroup end
+]])
