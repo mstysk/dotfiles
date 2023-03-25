@@ -41,3 +41,5 @@ eval "$(starship init zsh)"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/yoshioka/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+#
+uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'

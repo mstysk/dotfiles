@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>t", function() vim.cmd('Fern . -drawer -stay -keep -toggle -reveal=%') end)
+vim.keymap.set("n", "<leader>t", function() vim.cmd('Fern . -reveal=%') end)
 vim.g['fern#renderer'] = 'nerdfont'
 vim.g['fern#default_hidden'] = true
 
@@ -11,10 +11,3 @@ augroup my-glyph-palette
     autocmd FileType startify call glyph_palette#apply()
 augroup END
 ]]
-
-vim.cmd([[
-    augroup __fern__
-    au!
-    autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=%
-    augroup end
-]])
