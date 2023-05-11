@@ -57,4 +57,5 @@ return require('packer').startup(function(use)
   use 'lambdalisue/nerdfont.vim'
   use 'lambdalisue/fern-git-status.vim'
   use 'lambdalisue/glyph-palette.vim'
+  use 'github/copilot.vim'
 end)

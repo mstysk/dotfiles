@@ -36,3 +36,5 @@ vim.opt.list = true
 vim.opt.listchars:append({eol = '↵' })
 
 vim.opt.autoindent = true
+
+vim.opt.clipboard:append{'unnamedplus'}
