@@ -1,0 +1,4 @@
+{
+    "$schema": "/Users/yoshioka/.local/share/nvim/mason/packages/phpactor/phpactor.schema.json",
+    "language_server_phpstan.enabled": true
+}

@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
   -- or                            , branch = ''0'.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -29,26 +29,28 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
 
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {'williamboman/mason.nvim'},           -- Optional
-		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},         -- Required
-		  {'hrsh7th/cmp-nvim-lsp'},     -- Required
-		  {'hrsh7th/cmp-buffer'},       -- Optional
-		  {'hrsh7th/cmp-path'},         -- Optional
-		  {'saadparwaiz1/cmp_luasnip'}, -- Optional
-		  {'hrsh7th/cmp-nvim-lua'},     -- Optional
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},             -- Required
-		  {'rafamadriz/friendly-snippets'}, -- Optional
-	  }
-  }
+--  use('VonHeikemen/lsp-zero.nvim', {branch = 'v3.x'})
+
+--   use {
+-- 	  'VonHeikemen/lsp-zero.nvim',
+-- 	  branch = 'v3.x',
+-- 	  requires = {
+-- 		  -- LSP Support
+-- 		  {'neovim/nvim-lspconfig'},             -- Required
+-- 		  {'williamboman/mason.nvim'},           -- Optional
+-- 		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+-- 		  -- Autocompletion
+-- 		  {'hrsh7th/nvim-cmp'},         -- Required
+-- 		  {'hrsh7th/cmp-nvim-lsp'},     -- Required
+-- 		  {'hrsh7th/cmp-buffer'},       -- Optional
+-- 		  {'hrsh7th/cmp-path'},         -- Optional
+-- 		  {'saadparwaiz1/cmp_luasnip'}, -- Optional
+-- 		  {'hrsh7th/cmp-nvim-lua'},     -- Optional
+-- 		  -- Snippets
+-- 		  {'L3MON4D3/LuaSnip'},             -- Required
+-- 		  {'rafamadriz/friendly-snippets'}, -- Optional
+-- 	  }
+--  }
   use 'wakatime/vim-wakatime'
   use 'machakann/vim-highlightedyank'
   use 'mattn/vim-sonictemplate'
@@ -57,5 +59,40 @@ return require('packer').startup(function(use)
   use 'lambdalisue/nerdfont.vim'
   use 'lambdalisue/fern-git-status.vim'
   use 'lambdalisue/glyph-palette.vim'
-  use 'github/copilot.vim'
+  use "github/copilot.vim"
+  use 'godlygeek/tabular'
+  use 'ktakayama/gpt-commit-msg.vim'
+  use 'mbledkowski/neuleetcode.vim'
+  use 'lewis6991/spellsitter.nvim'
+  use 'cocopon/iceberg.vim'
+  use 'morhetz/gruvbox'
+  use 'altercation/vim-colors-solarized'
+  use 'folke/tokyonight.nvim'
+
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+      branch = 'v3.x',
+      requires = {
+          {'williamboman/mason.nvim'},
+          {'williamboman/mason-lspconfig.nvim'},
+          {'neovim/nvim-lspconfig'},
+          {'L3MON4D3/LuaSnip'},
+          {'hrsh7th/nvim-cmp'},
+          {'hrsh7th/cmp-nvim-lsp'},
+          {'hrsh7th/cmp-buffer'},
+          {'hrsh7th/cmp-path'},
+          {'saadparwaiz1/cmp_luasnip'},
+          {'rafamadriz/friendly-snippets'},
+      }
+    }
+    use({
+        "utilyre/sentiment.nvim",
+        tag = "*",
+        config = function()
+          require("sentiment").setup({
+            -- config
+          })
+        end,
+})
 end)
+

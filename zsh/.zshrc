@@ -25,21 +25,53 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light marlonrichert/zsh-autocomplete
 
 ## Snippet
-zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
+#zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
 
 path=(
+    $HOME/.rd/bin(N-/)
+    /opt/homebrew/bin/(N-/)
     $path
 )
-
-# asdf
-. ${HOME}/.asdf/asdf.sh
-
-# Starship
-eval "$(starship init zsh)"
-
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/yoshioka/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 #
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
+alias ls='exa'
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# Starship
+eval "$(starship init zsh)"
+
+# Completion
+#
+if type brew &>/dev/null;
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+# bindkye vim
+bindkey -v
+
+# iterm2 change profile
+function iterm2_change_profile() {
+  echo -e "\033]50;SetProfile=$1\a"
+}
+
+profiles=(
+    "Default"
+    "mob"
+)
+
+function getProfile() {
+    for profile in ${profiles}; do
+            echo $profile
+    done
+}
+
+alias chpr='iterm2_change_profile $(getProfile | peco)'

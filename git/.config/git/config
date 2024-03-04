@@ -16,6 +16,7 @@
     conflicttstyle = diff3
     tool = vimdiff
     conflictstyle = diff3
+    no-ff = true
 [alias]
     graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
     gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
@@ -25,7 +26,7 @@
     difff = diff --word-diff
     current = symbolic-ref --short HEAD
     up = push origin HEAD
-	please = push --force-with-lease origin HEAD
+	please = push --force-with-lease --force-if-includes origin HEAD
 	commend = commit --amend --no-edit
 	it = !git init && git commit -m “root” --allow-empty
 	stsh = stash --keep-index
@@ -50,6 +51,7 @@
 [rebase]
 	autosquash = true
 	autostash = true
+    rebaseMerges = true
 [pull]
 	rebase = merges
 [credential]
@@ -60,9 +62,10 @@
 	prompt = false
 [commit]
 	verbose = true
+	message = /Users/yoshioka/dotfiles/git/.config/git/gitmessage
+	template = /Users/yoshioka/dotfiles/git/.config/git/gitmessage
 [init]
 	defaultBranch = main
-	templateDir = ~/.git-templates/git-secrets
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
