@@ -28,13 +28,15 @@ zinit light marlonrichert/zsh-autocomplete
 #zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
 
 path=(
-    $HOME/.rd/bin(N-/)
+    $HOME/.rd/bin/(N-/)
     /opt/homebrew/bin/(N-/)
+    /opt/homebrew/opt/m4/bin/(N-/)
+    $HOME/.local/share/nvim/mason/bin/(N-/)
     $path
 )
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/yoshioka/.rd/bin:$PATH"
+# export PATH="/Users/yoshioka/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 #
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
