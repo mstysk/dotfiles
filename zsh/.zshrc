@@ -32,6 +32,7 @@ path=(
     /opt/homebrew/bin/(N-/)
     /opt/homebrew/opt/m4/bin/(N-/)
     $HOME/.local/share/nvim/mason/bin/(N-/)
+    $HOME/.local/bin/(N-/)
     $path
 )
 
@@ -42,7 +43,11 @@ path=(
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias ls='exa'
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+if [[ "${OSTYPE}" == "darwin" ]]; then
+    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+else
+    . $HOME/.asdf/asdf.sh
+fi
 
 # Starship
 eval "$(starship init zsh)"
