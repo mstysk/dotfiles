@@ -16,6 +16,8 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+zinit ice depth=1
+
 ## Plugin history-search-multi-word loaded with investigating.
 zinit load zdharma-continuum/history-search-multi-word
 
@@ -23,6 +25,7 @@ zinit load zdharma-continuum/history-search-multi-word
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light marlonrichert/zsh-autocomplete
+zinit light jeffreytse/zsh-vi-mode
 
 ## Snippet
 #zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
