@@ -46,7 +46,7 @@ export PATH="/Users/yoshioka/.rd/bin:$PATH"
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 #alias ls='exa'
 
-if [[ "${OSTYPE}" == "darwin" ]]; then
+if [[ "${OSTYPE}" == darwin* ]]; then
     . /opt/homebrew/opt/asdf/libexec/asdf.sh
 else
     . $HOME/.asdf/asdf.sh
