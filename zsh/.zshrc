@@ -1,5 +1,6 @@
 # alias
-#alias ls='exa'
+alias ls='lsd'
+alias lt='lsd --tree'
 alias cat='bat'
 
 # zinit
