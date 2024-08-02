@@ -1,5 +1,5 @@
 # alias
-alias ls='exa'
+#alias ls='exa'
 alias cat='bat'
 
 # zinit
@@ -17,14 +17,13 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 zinit ice depth=1
-
 ## Plugin history-search-multi-word loaded with investigating.
 zinit load zdharma-continuum/history-search-multi-word
-
-## Two regular plugins loaded without investigating.
+#
+### Two regular plugins loaded without investigating.
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light marlonrichert/zsh-autocomplete
+#zinit light marlonrichert/zsh-autocomplete
 zinit light jeffreytse/zsh-vi-mode
 
 ## Snippet
@@ -40,11 +39,11 @@ path=(
 )
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-# export PATH="/Users/yoshioka/.rd/bin:$PATH"
+export PATH="/Users/yoshioka/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 #
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
-alias ls='exa'
+#alias ls='exa'
 
 if [[ "${OSTYPE}" == "darwin" ]]; then
     . /opt/homebrew/opt/asdf/libexec/asdf.sh

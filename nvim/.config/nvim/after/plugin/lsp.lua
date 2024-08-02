@@ -2,8 +2,19 @@ local lsp_zero = require('lsp-zero')
 local lspconfig = require('lspconfig')
 local lsp_format = require('lsp-format')
 
+
+local deno_fmt = {
+    formatCommand = "deno fmt -- --stdin",
+    formatStdin = true
+}
+
 -- lsp-format setup
-lsp_format.setup {}
+lsp_format.setup {
+    typescript = {
+        deno_fmt = deno_fmt,
+    }
+}
+
 -- lsp settings
 lspconfig.denols.setup({
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
@@ -15,7 +26,7 @@ lspconfig.tsserver.setup({
 })
 
 lsp_zero.on_attach(function(clinet, bufnr)
-    lsp_zero.default_keymaps({buffer = bufnr})
+    lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 lsp_zero.set_sign_icons({
@@ -48,10 +59,10 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
     sources = {
-        {name = 'path'},
-        {name = 'nvim_lsp'},
-        {name = 'luasnip', keyword_length = 2},
-        {name = 'buffer', keyword_length = 3},
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'luasnip', keyword_length = 2 },
+        { name = 'buffer',  keyword_length = 3 },
     },
     window = {
         completion = cmp.config.window.bordered(),
@@ -78,5 +89,5 @@ cmp.setup({
     }),
     -- note: if you are going to use lsp-kind (another plugin)
     -- replace the line below with the function from lsp-kind
-    formatting = lsp_zero.cmp_format({details = true}),
+    formatting = lsp_zero.cmp_format({ details = true }),
 })
