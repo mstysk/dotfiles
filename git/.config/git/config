@@ -14,7 +14,7 @@
 	trustExitCode = true
 [merge]
     conflicttstyle = diff3
-    tool = vimdiff
+	tool = vimdiff
     conflictstyle = diff3
     no-ff = true
 [alias]
