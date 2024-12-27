@@ -1,0 +1,5 @@
+library_doc_template_converter: stg, prd
+
+library_doc_template_converter_dev: dev
+converter: slack 通知先を変更
+release:
