@@ -2,6 +2,7 @@
 alias ls='lsd'
 alias lt='lsd --tree'
 alias cat='bat'
+alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 
 # zinit
 ### Added by Zinit's installer
@@ -34,18 +35,17 @@ path=(
     $HOME/.rd/bin/(N-/)
     /opt/homebrew/bin/(N-/)
     /opt/homebrew/opt/m4/bin/(N-/)
+    /home/linuxbrew/.linuxbrew/bin/(N-/)
     $HOME/.local/share/nvim/mason/bin/(N-/)
     $HOME/.local/bin/(N-/)
     $HOME/dotfiles/bin/(N-/)
     $path
 )
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/yoshioka/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-#
-alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
-#alias ls='exa'
+# brew setup
+if [[ ! $(command -v brew) ]];then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 if [[ "${OSTYPE}" == darwin* ]]; then
     . /opt/homebrew/opt/asdf/libexec/asdf.sh
@@ -53,15 +53,24 @@ else
     . $HOME/.asdf/asdf.sh
 fi
 
-# Starship
-eval "$(starship init zsh)"
+# stow
+if [[ ! $(command -v stow) ]];then
+  brew install stow
+fi
 
-# Completion
-#
+stowList=(
+  git
+  nvim
+  starship
+  zsh
+)
+	
+stow -d $HOME/dotfiles $stowList
+
+# completion
 if type brew &>/dev/null;
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
   autoload -Uz compinit
   compinit
 fi
@@ -69,57 +78,13 @@ fi
 # bindkye vim
 bindkey -v
 
-# iterm2 change profile
-function iterm2_change_profile() {
-  echo -e "\033]50;SetProfile=$1\a"
-}
+# starship
+if [[ ! $(command -v starship) ]];then
+  asdf install starship latest
+  asdf global startship latest
+fi
 
-profiles=(
-    "Default"
-    "mob"
-)
+eval "$(starship init zsh)"
 
-function getProfile() {
-    for profile in ${profiles}; do
-            echo $profile
-    done
-}
-
-alias chpr='iterm2_change_profile $(getProfile | peco)'
-
-#!/bin/bash
-
-# ~/.aws/credentials ファイルから指定されたプロファイルとキーに対応する値を取得する関数
-
-# 指定されたプロファイルとキーに対応する値を取得する関数
-get_aws_credential() {
-    local profile_name="$1"
-    local key_name="$2"
-    local value=""
-
-    local found=0
-
-    while IFS=' = ' read -r key value; do
-        # プロファイルセクションの検出
-        if [[ $key == "[$profile_name]" ]]; then
-            found=1
-            continue
-        fi
-
-        # プロファイルセクションが終了したら抜ける
-        if [[ $key =~ ^\[.*\]$ ]]; then
-            found=0
-        fi
-
-        # プロファイルセクション内で指定されたキーを探す
-        if [[ $found -eq 1 && $key == "$key_name" ]]; then
-            echo "$value"
-            return
-        fi
-    done < ~/.aws/credentials
-}
-
-
-. "$HOME/.cargo/env"
-
+# custom scripts
 source $HOME/dotfiles/sh/aws_functions.sh

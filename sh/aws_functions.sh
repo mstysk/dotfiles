@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+#
 
 get_instance_id() {
   local INSTANCE_NAME=$1
@@ -47,3 +49,32 @@ ec2_instance_name_list() {
 select_ssm_session() {
     start_session $(get_instance_id $(ec2_instance_name_list|peco))
 }
+
+# 指定されたプロファイルとキーに対応する値を取得する関数
+get_aws_credential() {
+    local profile_name="$1"
+    local key_name="$2"
+    local value=""
+
+    local found=0
+
+    while IFS=' = ' read -r key value; do
+        # プロファイルセクションの検出
+        if [[ $key == "[$profile_name]" ]]; then
+            found=1
+            continue
+        fi
+
+        # プロファイルセクションが終了したら抜ける
+        if [[ $key =~ ^\[.*\]$ ]]; then
+            found=0
+        fi
+
+        # プロファイルセクション内で指定されたキーを探す
+        if [[ $found -eq 1 && $key == "$key_name" ]]; then
+            echo "$value"
+            return
+        fi
+    done < ~/.aws/credentials
+}
+
