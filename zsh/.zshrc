@@ -31,9 +31,6 @@ zinit light jeffreytse/zsh-vi-mode
 ## Snippet
 #zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
 
-# brew setup
-$(brew config | grep HOMEBREW_ | sed -e 's/\([^:]*\).*:\s\([^:]*\)*/export \1=\2/g')
-
 path=(
     $HOME/.rd/bin/(N-/)
     /home/linuxbrew/.linuxbrew/bin(N-/)
@@ -42,6 +39,9 @@ path=(
     $HOME/dotfiles/bin/(N-/)
     $path
 )
+
+# brew setup
+$(brew config | grep HOMEBREW_ | sed -e 's/\([^:]*\).*:\s\([^:]*\)*/export \1=\2/g')
 
 # asdf setup
 . $(brew --prefix asdf)/libexec/asdf.sh
@@ -76,16 +76,19 @@ source $HOME/dotfiles/sh/aws_functions.sh
 if [[ ! $(command -v brew) ]];then
     echo "Install brew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    source .zshrc
 fi
 
 if [[ ! $(command -v asdf) ]];then
   echo "Install asdf..."
   brew install asdf
+    source .zshrc
 fi
 
 if [[ ! $(command -v stow) ]];then
   echo "Install stow"
   brew install stow
+    source .zshrc
 fi
 
 # starship
@@ -93,4 +96,5 @@ if [[ ! $(command -v starship) ]];then
   echo 'Install starship'
   asdf install starship latest
   asdf global starship latest
+  source .zshrc
 fi
