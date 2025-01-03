@@ -73,6 +73,13 @@ eval "$(starship init zsh)"
 # custom scripts
 source $HOME/dotfiles/sh/aws_functions.sh
 
+function brewInstaller() {
+    cmd=$1
+    if [[ ! $(command -v ${cmd}) ]];then
+      brew install ${cmd}
+    fi
+}
+
 # Setup Install package
 if [[ ! $(command -v brew) ]];then
   echo "Install brew..."
@@ -100,3 +107,14 @@ if [[ ! $(command -v starship) ]];then
   asdf global starship latest
   source $DOTFILE_DIR/zsh/.zshrc
 fi
+
+# lsd bat
+cmdList=(
+  bat
+  lsd
+  nvim
+)
+
+for cmd in $cmdList;do
+    brewInstaller ${cmd}
+done
