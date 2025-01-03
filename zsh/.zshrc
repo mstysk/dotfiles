@@ -31,33 +31,22 @@ zinit light jeffreytse/zsh-vi-mode
 ## Snippet
 #zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
 
+# brew setup
+$(brew config | grep HOMEBREW_ | sed -e 's/\([^:]*\).*:\s\([^:]*\)*/export \1=\2/g')
+
 path=(
     $HOME/.rd/bin/(N-/)
-    /opt/homebrew/bin/(N-/)
-    /opt/homebrew/opt/m4/bin/(N-/)
-    /home/linuxbrew/.linuxbrew/bin/(N-/)
+    /home/linuxbrew/.linuxbrew/bin(N-/)
     $HOME/.local/share/nvim/mason/bin/(N-/)
     $HOME/.local/bin/(N-/)
     $HOME/dotfiles/bin/(N-/)
     $path
 )
 
-# brew setup
-if [[ ! $(command -v brew) ]];then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
+# asdf setup
+. $(brew --prefix asdf)/libexec/asdf.sh
 
-if [[ "${OSTYPE}" == darwin* ]]; then
-    . /opt/homebrew/opt/asdf/libexec/asdf.sh
-else
-    . $HOME/.asdf/asdf.sh
-fi
-
-# stow
-if [[ ! $(command -v stow) ]];then
-  brew install stow
-fi
-
+# stow setup
 stowList=(
   git
   nvim
@@ -78,13 +67,30 @@ fi
 # bindkye vim
 bindkey -v
 
-# starship
-if [[ ! $(command -v starship) ]];then
-  asdf install starship latest
-  asdf global startship latest
-fi
-
 eval "$(starship init zsh)"
 
 # custom scripts
 source $HOME/dotfiles/sh/aws_functions.sh
+
+# Setup Install package
+if [[ ! $(command -v brew) ]];then
+    echo "Install brew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if [[ ! $(command -v asdf) ]];then
+  echo "Install asdf..."
+  brew install asdf
+fi
+
+if [[ ! $(command -v stow) ]];then
+  echo "Install stow"
+  brew install stow
+fi
+
+# starship
+if [[ ! $(command -v starship) ]];then
+  echo 'Install starship'
+  asdf install starship latest
+  asdf global starship latest
+fi
