@@ -1,3 +1,4 @@
+export DOTFILE_DIR=$HOME/dotfiles
 # alias
 alias ls='lsd'
 alias lt='lsd --tree'
@@ -74,27 +75,28 @@ source $HOME/dotfiles/sh/aws_functions.sh
 
 # Setup Install package
 if [[ ! $(command -v brew) ]];then
-    echo "Install brew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    source .zshrc
+  echo "Install brew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  source $DOTFILE_DIR/zsh/.zshrc
 fi
 
 if [[ ! $(command -v asdf) ]];then
   echo "Install asdf..."
   brew install asdf
-    source .zshrc
+  source $DOTFILE_DIR/zsh/.zshrc
 fi
 
 if [[ ! $(command -v stow) ]];then
   echo "Install stow"
   brew install stow
-    source .zshrc
+  source $DOTFILE_DIR/zsh/.zshrc
 fi
 
 # starship
 if [[ ! $(command -v starship) ]];then
   echo 'Install starship'
+  asdf plugin add starship
   asdf install starship latest
   asdf global starship latest
-  source .zshrc
+  source $DOTFILE_DIR/zsh/.zshrc
 fi
